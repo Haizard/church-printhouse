@@ -81,3 +81,55 @@
     @apply font-headline;
   }
 }
+
+@layer components {
+  .section-shell {
+    @apply py-20 md:py-24;
+  }
+
+  .section-alt {
+    @apply bg-gradient-to-b from-slate-50 to-background;
+  }
+
+  .section-header-kicker {
+    @apply text-primary/90 font-bold tracking-[0.2em] text-[11px] uppercase mb-3;
+  }
+
+  .section-header-title {
+    @apply text-3xl md:text-5xl font-headline font-bold leading-tight;
+  }
+
+  .glass-kicker {
+    @apply inline-flex items-center rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/95 backdrop-blur-sm;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(120deg, hsl(var(--primary) / 0.82), hsl(var(--primary) / 0.45) 40%, hsl(var(--accent) / 0.2) 80%),
+      radial-gradient(circle at 80% 20%, hsl(var(--accent) / 0.35), transparent 45%);
+  }
+
+  .hero-title {
+    @apply text-balance text-4xl md:text-6xl lg:text-7xl font-headline font-bold leading-[1.06] tracking-tight text-white drop-shadow-sm;
+  }
+
+  .hero-subtitle {
+    @apply text-balance text-base md:text-xl font-body text-white/90 leading-relaxed max-w-2xl;
+  }
+
+  .premium-card {
+    @apply border border-white/60 bg-white/90 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .modern-outline-button {
+    @apply border-white/50 bg-white/10 text-white hover:bg-white hover:text-primary;
+  }
+
+  .mission-pill {
+    @apply inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary;
+  }
+
+  .cta-band {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary) / 0.92) 50%, hsl(var(--accent)) 100%);
+  }
+}
