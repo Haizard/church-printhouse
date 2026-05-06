@@ -92,6 +92,7 @@ export default function Home() {
     },
   ];
 
+  // Limited to exactly 3 items as requested
   const communityGallery = [
     { image: CommunityImageOne, title: "Nyakati za Ibada", hint: "church congregation" },
     { image: CommunityImageTwo, title: "Umoja wa Waamini", hint: "church fellowship" },
@@ -126,7 +127,7 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-grow">
-        {/* Simplified Hero Section with stats only */}
+        {/* Simplified Hero Section - Title and Stats Cards Only */}
         <section className="hero-section relative h-[90vh] min-h-[700px] overflow-hidden">
           <Carousel plugins={[Autoplay({ delay: 6000 })]} className="h-full w-full" opts={{ loop: true }}>
             <CarouselContent className="h-full">
@@ -229,7 +230,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Events Slider (2 mobile, 3 desktop) */}
+        {/* Events Slider (2 items mobile, 3 items desktop) */}
         <section className="section-shell events-shell">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Umoja Wetu" title="Matukio Yajayo" actionHref="/events" actionText="Tazama Yote" />
@@ -260,7 +261,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Sermons Slider (2 mobile, 3 desktop) */}
+        {/* Sermons Slider (2 items mobile, 3 items desktop) */}
         <section className="section-shell sermons-shell">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Neno la Bwana" title="Mahubiri ya Karibuni" actionHref="/sermons" actionText="Ona Yote" />
@@ -293,7 +294,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Community Gallery - 3 images total */}
+        {/* Community Gallery - Limited to exactly 3 items as requested */}
         <section className="section-shell identity-shell px-4 md:px-8">
           <div className="container mx-auto">
             <SectionHeader kicker="Maisha ya Kanisa" title="Picha za Ushirika na Ibada" />
@@ -311,7 +312,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Blog Slider (2 mobile, 3 desktop) */}
+        {/* Blog Slider (2 items mobile, 3 items desktop) */}
         <section className="section-shell bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Tafakari" title="Blogu Yetu" actionHref="/blog" actionText="Soma Zaidi" />

@@ -27,18 +27,18 @@ export function Footer() {
                 Nayoth Divine Power<br/>Christian Center
               </span>
             </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
+            <p className="text-base text-muted-foreground leading-relaxed max-w-sm">
               "Ngome ya Bwana kwa Makimbilio ya Watu Wake". Tumeitwa kuliandaa kanisa kwa unyakuo na kuinua jeshi la Bwana tangu mwaka 1992.
             </p>
             <div className="flex gap-6 mt-2">
               <Link href="#" className="text-primary/60 hover:text-primary transition-colors">
-                <Facebook className="h-5 w-5" />
+                <Facebook className="h-6 w-6" />
               </Link>
               <Link href="#" className="text-primary/60 hover:text-primary transition-colors">
-                <Instagram className="h-5 w-5" />
+                <Instagram className="h-6 w-6" />
               </Link>
               <Link href="#" className="text-primary/60 hover:text-primary transition-colors">
-                <Youtube className="h-5 w-5" />
+                <Youtube className="h-6 w-6" />
               </Link>
             </div>
           </div>
@@ -47,11 +47,11 @@ export function Footer() {
           <div className="col-span-1 space-y-6">
             <h3 className="font-headline font-bold text-lg border-l-4 border-primary pl-4 uppercase tracking-widest text-xs text-primary">Kurasa</h3>
             <div className="flex flex-col gap-4">
-              <Link href="/" className="text-sm text-muted-foreground hover:text-primary font-medium">Mwanzo</Link>
-              <Link href="/about" className="text-sm text-muted-foreground hover:text-primary font-medium">Kuhusu Sisi</Link>
-              <Link href="/sermons" className="text-sm text-muted-foreground hover:text-primary font-medium">Neno</Link>
-              <Link href="/events" className="text-sm text-muted-foreground hover:text-primary font-medium">Matukio</Link>
-              <Link href="/gallery" className="text-sm text-muted-foreground hover:text-primary font-medium">Picha</Link>
+              <Link href="/" className="text-base text-muted-foreground hover:text-primary font-medium">Mwanzo</Link>
+              <Link href="/about" className="text-base text-muted-foreground hover:text-primary font-medium">Kuhusu Sisi</Link>
+              <Link href="/sermons" className="text-base text-muted-foreground hover:text-primary font-medium">Neno</Link>
+              <Link href="/events" className="text-base text-muted-foreground hover:text-primary font-medium">Matukio</Link>
+              <Link href="/gallery" className="text-base text-muted-foreground hover:text-primary font-medium">Picha</Link>
             </div>
           </div>
 
@@ -59,12 +59,12 @@ export function Footer() {
           <div className="col-span-1 space-y-6">
             <h3 className="font-headline font-bold text-lg border-l-4 border-primary pl-4 uppercase tracking-widest text-xs text-primary">Wasiliana</h3>
             <ul className="space-y-5">
-              <li className="flex items-start gap-3 text-sm text-muted-foreground">
-                <MapPin className="h-5 w-5 text-primary shrink-0" />
+              <li className="flex items-start gap-3 text-base text-muted-foreground">
+                <MapPin className="h-6 w-6 text-primary shrink-0" />
                 <span>Mwanzo Mpya, Kimbunga, Tanzania</span>
               </li>
-              <li className="flex items-center gap-3 text-sm text-muted-foreground">
-                <Phone className="h-5 w-5 text-primary shrink-0" />
+              <li className="flex items-center gap-3 text-base text-muted-foreground">
+                <Phone className="h-6 w-6 text-primary shrink-0" />
                 <span>+255 NDPCC</span>
               </li>
             </ul>
