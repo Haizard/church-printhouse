@@ -1,8 +1,7 @@
 
 "use client";
 
-import { use } from "react";
-import Image from "next/image";
+import { use, useMemo } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -16,7 +15,11 @@ import { doc } from "firebase/firestore";
 export default function EventDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const db = useFirestore();
-  const eventRef = db ? doc(db, "events", id) : null;
+  
+  const eventRef = useMemo(() => 
+    db ? doc(db, "events", id) : null
+  , [db, id]);
+  
   const { data: event, loading } = useDoc(eventRef);
 
   if (loading) return <div className="flex min-h-screen items-center justify-center"><Loader2 className="h-12 w-12 text-primary animate-spin" /></div>;

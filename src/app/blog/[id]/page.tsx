@@ -1,21 +1,25 @@
 
 "use client";
 
-import { use } from "react";
+import { use, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, User, Calendar, Share2, Loader2, BookOpen } from "lucide-react";
+import { ChevronLeft, User, Calendar, Share2, Loader2 } from "lucide-react";
 import { useFirestore, useDoc } from "@/firebase";
 import { doc } from "firebase/firestore";
 
 export default function BlogPostDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const db = useFirestore();
-  const postRef = db ? doc(db, "blogPosts", id) : null;
+  
+  const postRef = useMemo(() => 
+    db ? doc(db, "blogPosts", id) : null
+  , [db, id]);
+  
   const { data: post, loading } = useDoc(postRef);
 
   if (loading) return <div className="flex min-h-screen items-center justify-center"><Loader2 className="h-12 w-12 text-primary animate-spin" /></div>;

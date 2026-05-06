@@ -1,7 +1,7 @@
 
 "use client";
 
-import { use } from "react";
+import { use, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
@@ -15,7 +15,11 @@ import { doc } from "firebase/firestore";
 export default function SermonDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const db = useFirestore();
-  const sermonRef = db ? doc(db, "sermons", id) : null;
+  
+  const sermonRef = useMemo(() => 
+    db ? doc(db, "sermons", id) : null
+  , [db, id]);
+  
   const { data: sermon, loading } = useDoc(sermonRef);
 
   if (loading) {
