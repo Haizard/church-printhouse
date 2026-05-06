@@ -2,13 +2,15 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Sprout, Menu, User } from "lucide-react";
+import { Sprout, Menu, User, LogOut } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
+import { useUser, useAuth } from "@/firebase";
+import { signOut } from "firebase/auth";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -21,12 +23,22 @@ const navItems = [
 
 export function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const { user } = useUser();
+  const auth = useAuth();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const handleLogout = async () => {
+    if (!auth) return;
+    await signOut(auth);
+    setIsOpen(false);
+    router.push('/');
+  };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -57,11 +69,22 @@ export function Navbar() {
             </Link>
           ))}
           <div className="h-6 w-px bg-border mx-2" />
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="/admin">
-              <User className="h-5 w-5" />
-            </Link>
-          </Button>
+          {user ? (
+            <div className="flex items-center gap-4">
+              <Link href="/admin" className="text-sm font-bold text-primary hover:underline">
+                Portal
+              </Link>
+              <Button variant="ghost" size="icon" onClick={handleLogout} title="Logout" className="text-muted-foreground hover:text-red-500 transition-colors">
+                <LogOut className="h-5 w-5" />
+              </Button>
+            </div>
+          ) : (
+            <Button variant="ghost" size="icon" asChild>
+              <Link href="/login">
+                <User className="h-5 w-5" />
+              </Link>
+            </Button>
+          )}
         </div>
 
         {/* Mobile Navigation */}
@@ -100,14 +123,34 @@ export function Navbar() {
                       </Link>
                     ))}
                     <Separator />
-                    <Link
-                      href="/admin"
-                      className="flex items-center gap-2 text-lg font-medium text-muted-foreground hover:text-primary"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <User className="h-5 w-5" />
-                      Admin Portal
-                    </Link>
+                    {user ? (
+                      <div className="flex flex-col gap-4">
+                        <Link
+                          href="/admin"
+                          className="flex items-center gap-2 text-lg font-medium text-primary"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <User className="h-5 w-5" />
+                          Admin Portal
+                        </Link>
+                        <Button 
+                          variant="destructive" 
+                          className="w-full justify-start rounded-xl"
+                          onClick={handleLogout}
+                        >
+                          <LogOut className="mr-2 h-5 w-5" /> Sign Out
+                        </Button>
+                      </div>
+                    ) : (
+                      <Link
+                        href="/login"
+                        className="flex items-center gap-2 text-lg font-medium text-muted-foreground hover:text-primary"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <User className="h-5 w-5" />
+                        Staff Login
+                      </Link>
+                    )}
                   </div>
                 </div>
               </SheetContent>
