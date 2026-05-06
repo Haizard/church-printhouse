@@ -8,12 +8,12 @@ export function Footer() {
   return (
     <footer className="w-full border-t bg-muted/30 pt-16 pb-8">
       <div className="container mx-auto px-4 md:px-8">
-        {/* Main Footer Grid - 2 columns on mobile, 3 on desktop */}
+        {/* Strictly follow 2 items mobile / 3 items desktop grid */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           {/* Logo & Info Section */}
-          <div className="col-span-1 flex flex-col gap-4">
+          <div className="col-span-2 lg:col-span-1 flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative h-10 w-10 overflow-hidden rounded-full border border-primary/10">
+              <div className="relative h-12 w-12 overflow-hidden rounded-full border border-primary/10 bg-white">
                 <Image 
                   src={Logo} 
                   alt="N.D.P.C.C. Logo" 
@@ -21,12 +21,12 @@ export function Footer() {
                   className="object-contain"
                 />
               </div>
-              <span className="text-xl font-headline font-bold text-primary">
-                N.D.P.C.C.
+              <span className="text-xl font-headline font-bold text-primary leading-tight">
+                Nayoth Divine Power<br/>Christian Center
               </span>
             </Link>
-            <p className="text-[10px] text-muted-foreground leading-relaxed">
-              "Ngome ya Bwana kwa Makimbilio ya Watu Wake". Tumeitwa kuliandaa kanisa kwa unyakuo na kuinua jeshi la watumishi wa mwisho.
+            <p className="text-[10px] text-muted-foreground leading-relaxed max-w-sm">
+              "Ngome ya Bwana kwa Makimbilio ya Watu Wake". Tumeitwa kuliandaa kanisa kwa unyakuo na kuinua jeshi la watumishi wa mwisho tangu mwaka 1992.
             </p>
             <div className="flex gap-4 mt-2">
               <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
@@ -42,43 +42,43 @@ export function Footer() {
           </div>
 
           {/* Links Section */}
-          <div className="col-span-1">
-            <h3 className="font-headline font-bold text-sm mb-4">Viungo</h3>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-              <Link href="/" className="text-[10px] text-muted-foreground hover:text-primary">Mwanzo</Link>
-              <Link href="/about" className="text-[10px] text-muted-foreground hover:text-primary">Kuhusu Sisi</Link>
-              <Link href="/sermons" className="text-[10px] text-muted-foreground hover:text-primary">Neno</Link>
-              <Link href="/events" className="text-[10px] text-muted-foreground hover:text-primary">Matukio</Link>
-              <Link href="/gallery" className="text-[10px] text-muted-foreground hover:text-primary">Picha</Link>
-              <Link href="/blog" className="text-[10px] text-muted-foreground hover:text-primary">Blogu</Link>
+          <div className="col-span-1 space-y-4">
+            <h3 className="font-headline font-bold text-sm mb-4 border-l-2 border-primary pl-2">Huduma Zetu</h3>
+            <div className="flex flex-col gap-2">
+              <Link href="/" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Mwanzo</Link>
+              <Link href="/about" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Kuhusu Sisi</Link>
+              <Link href="/sermons" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Neno la Bwana</Link>
+              <Link href="/events" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Matukio</Link>
+              <Link href="/gallery" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Picha za Huduma</Link>
+              <Link href="/blog" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Blogu Yetu</Link>
             </div>
           </div>
 
-          {/* Contact Section - spans 2 on mobile to maintain 2-col balance */}
-          <div className="col-span-2 lg:col-span-1 space-y-4">
-            <h3 className="font-headline font-bold text-sm mb-4">Wasiliana</h3>
-            <ul className="space-y-2">
+          {/* Contact Section */}
+          <div className="col-span-1 space-y-4">
+            <h3 className="font-headline font-bold text-sm mb-4 border-l-2 border-primary pl-2">Wasiliana Nasi</h3>
+            <ul className="space-y-3">
               <li className="flex items-start gap-2 text-[10px] text-muted-foreground">
-                <MapPin className="h-3 w-3 text-primary shrink-0" />
-                <span>Ramah Sanctuary, Tanzania</span>
+                <MapPin className="h-4 w-4 text-primary shrink-0" />
+                <span>Ramah Sanctuary, Tanzania<br/>Mwanzo Mpya Mtaa wa Kimbunga</span>
               </li>
               <li className="flex items-center gap-2 text-[10px] text-muted-foreground">
-                <Phone className="h-3 w-3 text-primary shrink-0" />
-                <span>+255 (Huduma)</span>
+                <Phone className="h-4 w-4 text-primary shrink-0" />
+                <span>+255 (Huduma ya Maombezi)</span>
               </li>
               <li className="flex items-center gap-2 text-[10px] text-muted-foreground">
-                <Mail className="h-3 w-3 text-primary shrink-0" />
+                <Mail className="h-4 w-4 text-primary shrink-0" />
                 <span>info@ndpcc.org</span>
               </li>
             </ul>
           </div>
         </div>
         
-        <div className="mt-16 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] text-muted-foreground">
-          <p>© {new Date().getFullYear()} Nayoth Divine Power Christian Center.</p>
+        <div className="mt-16 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] text-muted-foreground uppercase tracking-widest">
+          <p>© {new Date().getFullYear()} Nayoth Divine Power Christian Center. Haki zote zimehifadhiwa.</p>
           <div className="flex gap-4">
-            <Link href="/login" className="hover:text-primary">Staff Login</Link>
-            <Link href="#" className="hover:text-primary">Privacy</Link>
+            <Link href="/login" className="hover:text-primary font-bold">Staff Login</Link>
+            <Link href="#" className="hover:text-primary font-bold">Vigezo na Masharti</Link>
           </div>
         </div>
       </div>
