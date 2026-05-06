@@ -29,29 +29,31 @@ function getSectionRanges(source) {
   return ranges;
 }
 
-test("homepage places a non-content local-image-led section between events and blog", () => {
+test("homepage places a non-content section between events and sermons/blog", () => {
   const eventsIndex = pageSource.indexOf('title="Matukio Yajayo"');
+  const sermonsIndex = pageSource.indexOf('title="Mahubiri ya Karibuni"');
   const blogIndex = pageSource.indexOf('title="Blogu Yetu"');
 
   assert.notStrictEqual(eventsIndex, -1, 'Expected to find the events section title "Matukio Yajayo".');
+  assert.notStrictEqual(sermonsIndex, -1, 'Expected to find the sermons section title "Mahubiri ya Karibuni".');
   assert.notStrictEqual(blogIndex, -1, 'Expected to find the blog section title "Blogu Yetu".');
 
   const sections = getSectionRanges(pageSource);
   const separatorSection = sections.find((section) => {
-    const isBetweenEventsAndBlog = eventsIndex < section.start && section.end < blogIndex;
+    const isBetweenEventsAndSermons = eventsIndex < section.start && section.end < sermonsIndex;
     const hasSectionHeader = section.content.includes("SectionHeader");
     const usesLocalImage = localImageIdentifiers.some((identifier) => section.content.includes(identifier));
 
-    return isBetweenEventsAndBlog && !hasSectionHeader && usesLocalImage;
+    return isBetweenEventsAndSermons && !hasSectionHeader && usesLocalImage;
   });
 
   assert.ok(
-    separatorSection,
-    "Expected a non-content section using an imported local image between the events and blog sections."
+    separatorSection && sermonsIndex < blogIndex,
+    "Expected homepage source order to place events before a non-content local-image section, then sermons, then blog."
   );
 });
 
-test("homepage uses an imported local image outside the hero carousel", () => {
+test("homepage uses local image-backed sections beyond the hero", () => {
   assert.ok(localImageIdentifiers.length > 0, "Expected the homepage to import at least one local image asset.");
 
   const heroImageIdentifiers = localImageIdentifiers.filter((identifier) => heroSlidesBlock.includes(identifier));
