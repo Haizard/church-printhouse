@@ -55,7 +55,7 @@ export default function AboutPage() {
       <Navbar />
       
       <main className="flex-grow">
-        {/* Hero Section - High Contrast, Clear Image */}
+        {/* Hero Section - Maximum Contrast, No Dimming */}
         <section className="relative py-32 md:py-48 bg-black text-white overflow-hidden">
           <div className="absolute inset-0">
             <Image 
@@ -65,7 +65,8 @@ export default function AboutPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-black/30" />
+            {/* Very minimal overlay just for text shadow safety */}
+            <div className="absolute inset-0 bg-black/5" />
           </div>
           <div className="container mx-auto px-4 text-center relative z-10">
             <h1 className="text-5xl md:text-8xl font-headline font-bold mb-6 drop-shadow-2xl">Kuhusu N.D.P.C.C.</h1>
@@ -99,7 +100,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Detailed Content with Background Image */}
+        {/* Detailed Content with High Contrast Background Image */}
         <section className="relative py-24 md:py-32 overflow-hidden">
           <div className="absolute inset-0">
             <Image 
@@ -108,7 +109,8 @@ export default function AboutPage() {
               fill 
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-primary/90 backdrop-blur-sm" />
+            {/* Removed blur and high-opacity color to maintain image contrast */}
+            <div className="absolute inset-0 bg-black/10" />
           </div>
           
           <div className="container mx-auto px-4 md:px-8 max-w-4xl relative z-10">
@@ -218,7 +220,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Call to Action - Solid Background */}
+        {/* Call to Action - Solid Background for maximum readability */}
         <section className="relative py-32 bg-primary text-white overflow-hidden">
           <div className="container mx-auto px-4 text-center relative z-10">
             <div className="max-w-4xl mx-auto space-y-10">
