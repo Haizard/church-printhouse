@@ -26,9 +26,9 @@ export default function GalleryPage() {
 
   const { data: items, loading } = useCollection(galleryQuery);
 
-  const filteredItems = items?.filter(
+  const filteredItems = useMemo(() => items?.filter(
     (item) => activeCategory === "All" || item.category === activeCategory
-  );
+  ), [items, activeCategory]);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -36,12 +36,12 @@ export default function GalleryPage() {
 
       <main className="flex-grow container mx-auto px-4 py-12 md:px-8">
         <header className="mb-12 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4">
-            <Camera className="h-3 w-3" /> Visual Journey
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider mb-4">
+            <Camera className="h-3 w-3" /> Safari yetu katika Picha
           </div>
-          <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary mb-4">Life at Sanctuary</h1>
+          <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary mb-4">Maisha katika Huduma</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A window into our community gatherings, worship moments, and the beautiful nature that surrounds us.
+            Matukio ya ibada, mafunzo, na mikutano ya nje kupitia picha.
           </p>
         </header>
 
@@ -51,7 +51,7 @@ export default function GalleryPage() {
               key={cat}
               variant={activeCategory === cat ? "default" : "outline"}
               onClick={() => setActiveCategory(cat)}
-              className="rounded-full px-6 transition-all"
+              className="rounded-full px-4 h-9 text-xs"
             >
               {cat}
             </Button>
@@ -63,11 +63,11 @@ export default function GalleryPage() {
             <Loader2 className="h-12 w-12 text-primary animate-spin" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {filteredItems?.map((item) => (
               <Dialog key={item.id}>
                 <DialogTrigger asChild>
-                  <Card className="group relative aspect-[4/5] overflow-hidden border-none cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500">
+                  <Card className="group relative aspect-square overflow-hidden border-none cursor-pointer shadow-sm hover:shadow-lg transition-all duration-500">
                     {item.imageUrl && (
                       <Image
                         src={item.imageUrl}
@@ -76,17 +76,17 @@ export default function GalleryPage() {
                         className="object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                      <Badge className="w-fit mb-2 bg-white/20 backdrop-blur-md border-white/30 text-white">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4">
+                      <Badge className="w-fit mb-2 bg-white/20 backdrop-blur-md border-white/30 text-white text-[8px] px-2 py-0">
                         {item.category}
                       </Badge>
-                      <h3 className="text-white font-headline font-bold text-xl">{item.title}</h3>
-                      <Maximize2 className="absolute top-4 right-4 text-white/50 h-5 w-5" />
+                      <h3 className="text-white font-headline font-bold text-sm line-clamp-1">{item.title}</h3>
+                      <Maximize2 className="absolute top-2 right-2 text-white/50 h-3 w-3" />
                     </div>
                   </Card>
                 </DialogTrigger>
-                <DialogContent className="max-w-[90vw] md:max-w-[70vw] p-0 overflow-hidden bg-black border-none">
-                  <div className="relative aspect-[16/9] w-full">
+                <DialogContent className="max-w-[95vw] md:max-w-[70vw] p-0 overflow-hidden bg-black border-none">
+                  <div className="relative aspect-video w-full">
                     {item.imageUrl && (
                       <Image
                         src={item.imageUrl}
@@ -96,12 +96,12 @@ export default function GalleryPage() {
                       />
                     )}
                   </div>
-                  <div className="p-6 bg-white dark:bg-slate-900">
+                  <div className="p-4 bg-white">
                     <div className="flex items-center justify-between mb-2">
-                      <h2 className="text-2xl font-headline font-bold text-primary">{item.title}</h2>
-                      <Badge variant="secondary">{item.category}</Badge>
+                      <h2 className="text-xl font-headline font-bold text-primary">{item.title}</h2>
+                      <Badge variant="secondary" className="text-[10px]">{item.category}</Badge>
                     </div>
-                    <p className="text-muted-foreground">{item.description}</p>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
                   </div>
                 </DialogContent>
               </Dialog>
@@ -111,9 +111,9 @@ export default function GalleryPage() {
 
         {!loading && filteredItems?.length === 0 && (
           <div className="py-24 text-center">
-            <h3 className="text-xl font-medium text-muted-foreground">No images found in this category.</h3>
+            <h3 className="text-xl font-medium text-muted-foreground">Hakuna picha zilizopatikana.</h3>
             <Button variant="link" onClick={() => setActiveCategory("All")} className="mt-2 text-primary">
-              View all images
+              Onyesha zote
             </Button>
           </div>
         )}

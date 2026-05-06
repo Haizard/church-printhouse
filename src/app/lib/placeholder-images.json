@@ -2,6 +2,30 @@
 {
   "placeholderImages": [
     {
+      "id": "hero-1",
+      "description": "N.D.P.C.C. Sanctuary",
+      "imageUrl": "https://picsum.photos/seed/ndpcc1/1200/600",
+      "imageHint": "church sanctuary"
+    },
+    {
+      "id": "hero-2",
+      "description": "Prayer and Worship",
+      "imageUrl": "https://picsum.photos/seed/ndpcc2/1200/600",
+      "imageHint": "worship prayer"
+    },
+    {
+      "id": "hero-3",
+      "description": "Community Bible Study",
+      "imageUrl": "https://picsum.photos/seed/ndpcc3/1200/600",
+      "imageHint": "bible study"
+    },
+    {
+      "id": "hero-4",
+      "description": "Global Outreach",
+      "imageUrl": "https://picsum.photos/seed/ndpcc4/1200/600",
+      "imageHint": "global mission"
+    },
+    {
       "id": "hero-church",
       "description": "A serene church building in a forest setting",
       "imageUrl": "https://picsum.photos/seed/church1/1200/600",
@@ -30,42 +54,6 @@
       "description": "An open bible and a notebook on a wooden table",
       "imageUrl": "https://picsum.photos/seed/blog1/800/600",
       "imageHint": "bible study"
-    },
-    {
-      "id": "gallery-worship-1",
-      "description": "Worship team performing on stage",
-      "imageUrl": "https://picsum.photos/seed/worship1/800/600",
-      "imageHint": "worship music"
-    },
-    {
-      "id": "gallery-community-1",
-      "description": "Small group meeting in a cozy room",
-      "imageUrl": "https://picsum.photos/seed/community2/800/600",
-      "imageHint": "small group"
-    },
-    {
-      "id": "gallery-outreach-1",
-      "description": "Volunteers working at a community garden",
-      "imageUrl": "https://picsum.photos/seed/outreach1/800/600",
-      "imageHint": "volunteer garden"
-    },
-    {
-      "id": "gallery-nature-1",
-      "description": "A waterfall deep in the evergreen forest",
-      "imageUrl": "https://picsum.photos/seed/nature2/800/600",
-      "imageHint": "forest waterfall"
-    },
-    {
-      "id": "gallery-worship-2",
-      "description": "Candlelight service in the sanctuary",
-      "imageUrl": "https://picsum.photos/seed/worship2/800/600",
-      "imageHint": "candlelight worship"
-    },
-    {
-      "id": "gallery-community-2",
-      "description": "Youth group playing games outdoors",
-      "imageUrl": "https://picsum.photos/seed/youth1/800/600",
-      "imageHint": "youth games"
     }
   ]
 }

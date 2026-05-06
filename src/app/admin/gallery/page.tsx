@@ -88,7 +88,7 @@ export default function AdminGalleryPage() {
               </Link>
               <h1 className="text-3xl font-headline font-bold text-primary">Manage Gallery</h1>
             </div>
-            <Dialog open={isDialogOpen} onOpenChange={(open) => { setIsOpen(open); if (!open) setEditingItem(null); }}>
+            <Dialog open={isDialogOpen} onOpenChange={(open) => { setIsOpen(open); if (!open) setEditingPost(null); }}>
               <DialogTrigger asChild>
                 <Button className="rounded-xl"><Plus className="mr-2 h-4 w-4" /> Add Image</Button>
               </DialogTrigger>
@@ -105,7 +105,7 @@ export default function AdminGalleryPage() {
             </Dialog>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
             {loading ? (
               <div className="col-span-full py-20 flex justify-center"><Loader2 className="animate-spin h-10 w-10 text-primary" /></div>
             ) : items?.length === 0 ? (
@@ -123,8 +123,8 @@ export default function AdminGalleryPage() {
                   </div>
                 </div>
                 <div className="p-4">
-                  <p className="font-bold truncate">{item.title}</p>
-                  <p className="text-xs text-muted-foreground">{item.category}</p>
+                  <p className="font-bold truncate text-sm">{item.title}</p>
+                  <p className="text-[10px] text-muted-foreground">{item.category}</p>
                 </div>
               </Card>
             ))}
