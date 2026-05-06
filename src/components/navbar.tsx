@@ -48,7 +48,7 @@ export function Navbar() {
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-8">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative h-12 w-12 overflow-hidden rounded-full border border-primary/10">
+            <div className="relative h-12 w-12 overflow-hidden rounded-full border border-primary/10 bg-white">
               <Image 
                 src={Logo} 
                 alt="N.D.P.C.C. Logo" 
@@ -111,7 +111,7 @@ export function Navbar() {
                     className="flex items-center gap-3 mb-4"
                     onClick={() => setIsOpen(false)}
                   >
-                    <div className="relative h-12 w-12 overflow-hidden rounded-full border border-primary/10">
+                    <div className="relative h-12 w-12 overflow-hidden rounded-full border border-primary/10 bg-white">
                       <Image 
                         src={Logo} 
                         alt="N.D.P.C.C. Logo" 
