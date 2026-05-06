@@ -4,7 +4,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Sprout, Menu, User, LogOut } from "lucide-react";
+import { Shield, Menu, User, LogOut } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -13,12 +13,12 @@ import { useUser, useAuth } from "@/firebase";
 import { signOut } from "firebase/auth";
 
 const navItems = [
-  { name: "Home", href: "/" },
-  { name: "Sermons", href: "/sermons" },
-  { name: "Events", href: "/events" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" },
+  { name: "Mwanzo", href: "/" },
+  { name: "Neno", href: "/sermons" },
+  { name: "Matukio", href: "/events" },
+  { name: "Picha", href: "/gallery" },
+  { name: "Blogu", href: "/blog" },
+  { name: "Mawasiliano", href: "/contact" },
 ];
 
 export function Navbar() {
@@ -46,10 +46,10 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2 group">
             <div className="rounded-full bg-primary/10 p-2 group-hover:bg-primary/20 transition-colors">
-              <Sprout className="h-6 w-6 text-primary" />
+              <Shield className="h-6 w-6 text-primary" />
             </div>
             <span className="text-xl font-headline font-bold text-primary tracking-tight">
-              Evergreen Sanctuary
+              N.D.P.C.C.
             </span>
           </Link>
         </div>
@@ -103,9 +103,9 @@ export function Navbar() {
                     className="flex items-center gap-2 mb-4"
                     onClick={() => setIsOpen(false)}
                   >
-                    <Sprout className="h-6 w-6 text-primary" />
-                    <span className="text-xl font-headline font-bold text-primary">
-                      Evergreen Sanctuary
+                    <Shield className="h-6 w-6 text-primary" />
+                    <span className="text-xl font-headline font-bold text-primary leading-tight">
+                      Nayoth Divine Power<br/>Christian Center
                     </span>
                   </Link>
                   <div className="flex flex-col gap-6">

@@ -5,8 +5,8 @@ import { FirebaseClientProvider } from '@/firebase';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Evergreen Sanctuary | A Place for Growth and Serenity',
-  description: 'Welcome to Evergreen Sanctuary, a church community focused on spiritual growth, serenity, and community gathering.',
+  title: 'Nayoth Divine Power Christian Center | Ngome ya Bwana',
+  description: 'Karibu N.D.P.C.C - Ngome ya Bwana kwa makimbilio ya watu wake. Tunaliandaa kanisa kwa ajili ya unyakuo na kuinua jeshi la kiroho.',
 };
 
 export default function RootLayout({
@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="sw">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
