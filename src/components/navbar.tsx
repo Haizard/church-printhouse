@@ -4,13 +4,15 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Shield, Menu, User, LogOut } from "lucide-react";
+import { Menu, User, LogOut } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { useUser, useAuth } from "@/firebase";
 import { signOut } from "firebase/auth";
+import Image from "next/image";
+import Logo from "@/images/NDPCC 01.png";
 
 const navItems = [
   { name: "Mwanzo", href: "/" },
@@ -45,11 +47,16 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-8">
         <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="rounded-full bg-primary/10 p-2 group-hover:bg-primary/20 transition-colors">
-              <Shield className="h-6 w-6 text-primary" />
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative h-12 w-12 overflow-hidden rounded-full border border-primary/10">
+              <Image 
+                src={Logo} 
+                alt="N.D.P.C.C. Logo" 
+                fill 
+                className="object-contain"
+              />
             </div>
-            <span className="text-xl font-headline font-bold text-primary tracking-tight">
+            <span className="text-xl font-headline font-bold text-primary tracking-tight hidden sm:block">
               N.D.P.C.C.
             </span>
           </Link>
@@ -101,10 +108,17 @@ export function Navbar() {
                 <div className="flex flex-col gap-8 py-12">
                   <Link 
                     href="/" 
-                    className="flex items-center gap-2 mb-4"
+                    className="flex items-center gap-3 mb-4"
                     onClick={() => setIsOpen(false)}
                   >
-                    <Shield className="h-6 w-6 text-primary" />
+                    <div className="relative h-12 w-12 overflow-hidden rounded-full border border-primary/10">
+                      <Image 
+                        src={Logo} 
+                        alt="N.D.P.C.C. Logo" 
+                        fill 
+                        className="object-contain"
+                      />
+                    </div>
                     <span className="text-xl font-headline font-bold text-primary leading-tight">
                       Nayoth Divine Power<br/>Christian Center
                     </span>

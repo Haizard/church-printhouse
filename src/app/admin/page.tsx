@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AdminGuard } from "@/components/admin-guard";
 import { 
   FileText, 
@@ -14,8 +14,7 @@ import {
   Wand2, 
   Image as ImageIcon, 
   PlusCircle, 
-  MessageSquare,
-  ArrowRight
+  MessageSquare
 } from "lucide-react";
 import { useFirestore, useCollection } from "@/firebase";
 import { collection, query, limit, orderBy } from "firebase/firestore";
@@ -59,8 +58,9 @@ export default function AdminDashboard() {
             </Button>
           </header>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-            {stats.map((stat, i) => (
+          {/* Stats Grid - 2 items on mobile, limited to 3/4 on large (here 3 to respect the rule) */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+            {stats.slice(0, 3).map((stat, i) => (
               <Link href={stat.href} key={i}>
                 <Card className="border-none shadow-sm overflow-hidden hover:ring-2 hover:ring-primary/20 transition-all cursor-pointer h-full">
                   <CardContent className="p-4 flex flex-col justify-between h-full gap-2">
