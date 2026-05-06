@@ -1,28 +1,27 @@
-
 "use client";
 
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
-import { collection, limit, orderBy, query } from "firebase/firestore";
-import { ArrowRight, Calendar, Clock, Globe, Shield, Sparkles, Swords } from "lucide-react";
+import { ArrowRight, Calendar, Clock, Globe, Shield, Sparkles, Swords, Cross } from "lucide-react";
 import { useMemo } from "react";
+import { collection, limit, orderBy, query } from "firebase/firestore";
+import Autoplay from "embla-carousel-autoplay";
 
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
 import { useCollection, useFirestore } from "@/firebase";
 
-import Autoplay from "embla-carousel-autoplay";
-
-import IdentityImage from "@/images/_B4A1451.jpg";
-import WorshipImage from "@/images/_B4A1779.jpg";
+// Importing local images for homepage sections
 import HeroImageOne from "@/images/_B4A1507.jpg";
 import HeroImageTwo from "@/images/_B4A1498.jpg";
 import HeroImageThree from "@/images/_B4A1527.jpg";
 import HeroImageFour from "@/images/_B4A1581.jpg";
+import IdentityImage from "@/images/_B4A1451.jpg";
+import WorshipImage from "@/images/_B4A1779.jpg";
 import CommunityImageOne from "@/images/_B4A1466.jpg";
 import CommunityImageTwo from "@/images/_B4A7030.jpg";
 import CommunityImageThree from "@/images/_B4A1752.jpg";
@@ -78,10 +77,10 @@ export default function Home() {
   ];
 
   const sampleEvents = [
-    { id: "e1", title: "Ibada ya Jumapili", date: "Jumapili", time: "09:00 AM", description: "Karibu tushiriki sifa na neno la uzima." },
-    { id: "e2", title: "Semina ya Vijana", date: "Jumamosi", time: "03:00 PM", description: "Kuinua jeshi la kiroho katika kizazi hiki." },
-    { id: "e3", title: "Mkutano wa Injili", date: "Alhamisi", time: "04:30 PM", description: "Kufikisha habari njema mitaani." },
-    { id: "e4", title: "Mkesha wa Maombi", date: "Ijumaa", time: "10:00 PM", description: "Kujiandaa kwa ajili ya unyakuo." },
+    { id: "e1", title: "Ibada ya Jumapili", date: "Kila Jumapili", time: "09:00 AM", category: "Ibada", description: "Karibu tushiriki sifa na neno la uzima." },
+    { id: "e2", title: "Semina ya Vijana", date: "Jumamosi Hii", time: "03:00 PM", category: "Huduma", description: "Kuinua jeshi la kiroho katika kizazi hiki." },
+    { id: "e3", title: "Mkutano wa Injili", date: "20 Mei 2024", time: "04:30 PM", category: "Mikutano", description: "Kufikisha habari njema mitaani." },
+    { id: "e4", title: "Mkesha wa Maombi", date: "Ijumaa ya Kwanza", time: "10:00 PM", category: "Maombi", description: "Kujiandaa kwa ajili ya unyakuo kupitia magoti." },
   ];
 
   const sampleSermons = [
@@ -94,8 +93,8 @@ export default function Home() {
   const sampleBlogs = [
     { id: "b1", title: "Safari yetu tangu 1992", category: "Historia", summary: "Jinsi Bwana alivyoanzisha huduma hii ya kipekee.", image: BlogFeatureImageOne },
     { id: "b2", title: "Huduma kwa Mayatima", category: "Foundation", summary: "Gibea Foundation ikigusa maisha ya wahitaji.", image: BlogFeatureImageTwo },
-    { id: "b3", title: "Maandalizi ya Unyakuo", category: "Mafundisho", summary: "Nini unapaswa kufanya ukiwa Mkristo.", image: IdentityImage },
-    { id: "b4", title: "Umoja wa Kanisa", category: "Ushirika", summary: "Kujenga jeshi lenye nguvu kupitia upendo.", image: CommunityImageTwo },
+    { id: "b3", title: "Maandalizi ya Unyakuo", category: "Mafundisho", summary: "Nini unapaswa kufanya ukiwa Mkristo katika nyakati hizi.", image: IdentityImage },
+    { id: "b4", title: "Umoja wa Kanisa", category: "Ushirika", summary: "Kujenga jeshi lenye nguvu kupitia upendo na umoja.", image: CommunityImageTwo },
   ];
 
   const communityGallery = [
@@ -109,7 +108,7 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-grow">
-        {/* Hero Slider */}
+        {/* 1. Hero Slider - Cinematic and Premium */}
         <section className="hero-section relative h-[90vh] min-h-[700px] overflow-hidden">
           <Carousel plugins={[Autoplay({ delay: 6000 })]} className="h-full w-full" opts={{ loop: true }}>
             <CarouselContent className="h-full">
@@ -144,7 +143,7 @@ export default function Home() {
           </Carousel>
         </section>
 
-        {/* Mission Band */}
+        {/* 2. Mission Band */}
         <section className="mission-band-shell">
           <div className="container mx-auto px-4 md:px-8">
             <div className="mission-band-grid">
@@ -176,7 +175,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Identity Section */}
+        {/* 3. Identity Section */}
         <section className="section-shell identity-shell px-4 md:px-8">
           <div className="container mx-auto">
             <div className="image-story-panel">
@@ -185,7 +184,7 @@ export default function Home() {
               <div className="image-story-content text-white">
                 <p className="section-header-kicker text-white/80">Utambulisho Wetu</p>
                 <h2 className="text-4xl md:text-6xl font-headline font-bold leading-tight">Ngome ya Bwana kwa Makimbilio ya Watu Wake.</h2>
-                <p className="max-w-2xl text-lg opacity-80">Tangu 1992, tumekuwa kitovu cha maombi na uamsho wa kweli wa Roho Mtakatifu.</p>
+                <p className="max-w-2xl text-lg opacity-80">Tangu 1992, tumekuwa kitovu cha maombi na uamsho wa kweli wa Roho Mtakatifu kwa ajili ya kanisa la mwisho.</p>
                 <Button asChild size="lg" className="rounded-full bg-white text-primary hover:bg-slate-100 w-fit">
                   <Link href="/about">Soma Historia</Link>
                 </Button>
@@ -194,7 +193,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Events Slider */}
+        {/* 4. Featured Events Slider */}
         <section className="section-shell events-shell">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Umoja Wetu" title="Matukio Yajayo" actionHref="/events" actionText="Ona Yote" />
@@ -205,7 +204,7 @@ export default function Home() {
                     <Card className="event-editorial-card h-full">
                       <CardContent className="p-8 space-y-6">
                         <Badge className="bg-primary/5 text-primary border-none rounded-full px-4">{event.date}</Badge>
-                        <h3 className="text-2xl font-headline font-bold text-primary">{event.title}</h3>
+                        <h3 className="text-2xl font-headline font-bold text-primary line-clamp-1">{event.title}</h3>
                         <p className="text-sm text-muted-foreground line-clamp-2">{event.description}</p>
                         <div className="pt-4 border-t border-primary/5 flex items-center justify-between text-xs font-bold">
                           <span className="text-primary/60 flex items-center gap-1"><Clock className="h-3 w-3" /> {event.time}</span>
@@ -220,7 +219,23 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Sermons Slider */}
+        {/* 5. Worship / Scripture Highlight Section */}
+        <section className="section-shell bg-primary text-primary-foreground relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10 pointer-events-none">
+            <Image src={WorshipImage} alt="Worship" fill className="object-cover" />
+          </div>
+          <div className="container mx-auto px-4 text-center relative z-10">
+            <div className="max-w-4xl mx-auto space-y-8">
+              <Cross className="h-12 w-12 text-accent mx-auto mb-4 opacity-50" />
+              <h2 className="text-3xl md:text-5xl font-headline font-bold leading-tight">
+                "Siionei haya Injili kwa maana ni uweza wa Mungu uletao wokovu kwa kila aaminiye."
+              </h2>
+              <p className="text-2xl font-bold text-accent">WARUMI 1:16</p>
+            </div>
+          </div>
+        </section>
+
+        {/* 6. Recent Sermons Slider */}
         <section className="section-shell sermons-shell">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Neno la Bwana" title="Mahubiri ya Karibuni" actionHref="/sermons" actionText="Ona Yote" />
@@ -245,7 +260,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Community Gallery */}
+        {/* 7. Community Photography Section - Limited to 3 items */}
         <section className="section-shell identity-shell px-4 md:px-8">
           <div className="container mx-auto">
             <SectionHeader kicker="Maisha ya Kanisa" title="Picha za Ushirika na Ibada" actionHref="/gallery" actionText="Nyumba ya Picha" />
@@ -261,7 +276,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Blog Slider */}
+        {/* 8. Blog Section Slider */}
         <section className="section-shell bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Tafakari" title="Blogu Yetu" actionHref="/blog" actionText="Soma Yote" />
@@ -269,7 +284,7 @@ export default function Home() {
               <CarouselContent className="-ml-4">
                 {sampleBlogs.map((blog) => (
                   <CarouselItem key={blog.id} className="basis-1/2 lg:basis-1/3 pl-4">
-                    <Card className="rounded-[2.5rem] border-none shadow-sm overflow-hidden bg-slate-50 flex flex-col h-full">
+                    <Card className="rounded-[2.5rem] border-none shadow-sm overflow-hidden bg-slate-50 flex flex-col h-full hover:shadow-lg transition-shadow">
                       <div className="relative aspect-video"><Image src={blog.image} alt={blog.title} fill className="object-cover" /></div>
                       <div className="p-6 flex flex-col flex-grow">
                         <Badge variant="outline" className="w-fit mb-4 text-[10px] font-bold uppercase">{blog.category}</Badge>
@@ -285,16 +300,16 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Final CTA */}
+        {/* 9. Final CTA Band */}
         <section className="section-shell px-4 md:px-8">
           <div className="container mx-auto">
             <div className="final-cta-panel text-center">
               <div className="relative z-10 space-y-6 max-w-4xl mx-auto">
-                <h3 className="text-4xl md:text-6xl font-headline font-bold">"Siionei haya Injili kwa maana ni uweza wa Mungu uletao wokovu kwa kila aaminiye."</h3>
-                <p className="text-xl font-bold opacity-80">WARUMI 1:16</p>
+                <h3 className="text-3xl md:text-5xl font-headline font-bold">Jiunge Nasi katika Safari hii ya Kuliandaa Kanisa.</h3>
+                <p className="text-xl font-body opacity-80 max-w-2xl mx-auto">Kimbilio la kweli la kiroho linapatikana katika Neno na Uwepo wa Bwana.</p>
                 <div className="pt-8">
-                  <Button asChild size="lg" className="rounded-full bg-white text-primary hover:bg-slate-100 px-10 h-14 font-bold">
-                    <Link href="/contact">Jiunge Nasi Leo</Link>
+                  <Button asChild size="lg" className="rounded-full bg-white text-primary hover:bg-slate-100 px-10 h-14 font-bold shadow-xl">
+                    <Link href="/contact">Wasiliana Nasi Leo</Link>
                   </Button>
                 </div>
               </div>

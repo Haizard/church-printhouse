@@ -44,7 +44,7 @@
     @apply text-3xl font-headline font-bold leading-[1.04] tracking-tight md:text-5xl lg:text-6xl;
   }
 
-  /* Lightened Hero Overlay */
+  /* Lightened Hero Overlay as requested */
   .hero-overlay {
     background: linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.2));
   }
