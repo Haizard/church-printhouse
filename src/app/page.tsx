@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/navbar";
@@ -21,14 +20,18 @@ export default function Home() {
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative h-[80vh] w-full flex items-center justify-center overflow-hidden">
-          <Image
-            src={heroImage?.imageUrl || ""}
-            alt={heroImage?.description || "Hero"}
-            fill
-            className="object-cover brightness-[0.7]"
-            priority
-            data-ai-hint="church forest"
-          />
+          {heroImage?.imageUrl ? (
+            <Image
+              src={heroImage.imageUrl}
+              alt={heroImage.description || "Welcome to Evergreen Sanctuary"}
+              fill
+              className="object-cover brightness-[0.7]"
+              priority
+              data-ai-hint="church forest"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-primary/20" />
+          )}
           <div className="container relative z-10 px-4 text-center text-white">
             <h1 className="text-4xl md:text-7xl font-headline font-bold mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
               Welcome to Evergreen Sanctuary
@@ -88,13 +91,15 @@ export default function Home() {
             <div className="flex flex-col md:flex-row items-center gap-16">
               <div className="flex-1">
                 <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl group">
-                  <Image
-                    src={sermonImage?.imageUrl || ""}
-                    alt="Latest Sermon"
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    data-ai-hint="pulpit microphone"
-                  />
+                  {sermonImage?.imageUrl && (
+                    <Image
+                      src={sermonImage.imageUrl}
+                      alt="Latest Sermon"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      data-ai-hint="pulpit microphone"
+                    />
+                  )}
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
                     <div className="bg-white/20 backdrop-blur-md p-6 rounded-full border border-white/30 hover:scale-110 transition-transform cursor-pointer">
                       <Play className="h-10 w-10 text-white fill-white" />
@@ -177,13 +182,15 @@ export default function Home() {
                 </Button>
               </div>
               <div className="relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-                <Image
-                  src={blogImage?.imageUrl || ""}
-                  alt="Blog Preview"
-                  fill
-                  className="object-cover"
-                  data-ai-hint="bible study"
-                />
+                {blogImage?.imageUrl && (
+                  <Image
+                    src={blogImage.imageUrl}
+                    alt="Blog Preview"
+                    fill
+                    className="object-cover"
+                    data-ai-hint="bible study"
+                  />
+                )}
               </div>
             </div>
           </div>

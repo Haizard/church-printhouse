@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -9,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search, Play, Calendar, User, Filter } from "lucide-react";
+import { Search, Play, Calendar, User } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const MOCK_SERMONS = [
@@ -106,12 +105,18 @@ export default function SermonsPage() {
             return (
               <Card key={sermon.id} className="overflow-hidden border-none shadow-sm hover:shadow-md transition-all group bg-white">
                 <div className="relative aspect-video">
-                  <Image 
-                    src={placeholder?.imageUrl || ""}
-                    alt={sermon.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                  {placeholder?.imageUrl ? (
+                    <Image 
+                      src={placeholder.imageUrl}
+                      alt={sermon.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-muted flex items-center justify-center">
+                      <Play className="h-10 w-10 text-muted-foreground" />
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
                     <div className="bg-white/20 backdrop-blur-md p-4 rounded-full border border-white/30 scale-0 group-hover:scale-100 transition-transform">
                       <Play className="h-6 w-6 text-white fill-white" />
