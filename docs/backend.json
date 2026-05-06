@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "Sermon": {
+      "title": "Sermon",
+      "description": "A recording or transcript of a church teaching.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "speaker": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "topic": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "description": { "type": "string" },
+        "videoUrl": { "type": "string" }
+      },
+      "required": ["title", "speaker", "date", "topic"]
+    },
+    "Event": {
+      "title": "Event",
+      "description": "A community gathering or church activity.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "description": { "type": "string" },
+        "location": { "type": "string" }
+      },
+      "required": ["title", "date", "time"]
+    },
+    "BlogPost": {
+      "title": "Blog Post",
+      "description": "A reflection or news update from the church community.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "author": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "content": { "type": "string" },
+        "imageUrl": { "type": "string" }
+      },
+      "required": ["title", "author", "date", "content"]
+    }
+  },
+  "auth": {
+    "providers": ["google.com", "password"]
+  },
+  "firestore": {
+    "/sermons/{sermonId}": {
+      "schema": { "$ref": "#/entities/Sermon" },
+      "description": "Collection of sermon records."
+    },
+    "/events/{eventId}": {
+      "schema": { "$ref": "#/entities/Event" },
+      "description": "Collection of upcoming and past events."
+    },
+    "/blogPosts/{postId}": {
+      "schema": { "$ref": "#/entities/BlogPost" },
+      "description": "Collection of community blog posts."
+    }
+  }
+}
