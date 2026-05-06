@@ -1,8 +1,9 @@
+
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Calendar, Clock, Globe, Shield, Sparkles, Swords, Cross } from "lucide-react";
+import { ArrowRight, Calendar, Clock, Globe, Shield, Sparkles, Swords, Cross, Target, Compass, Heart } from "lucide-react";
 import { useMemo } from "react";
 import { collection, limit, orderBy, query } from "firebase/firestore";
 import Autoplay from "embla-carousel-autoplay";
@@ -300,19 +301,51 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 9. Final CTA Band */}
-        <section className="section-shell px-4 md:px-8">
+        {/* 9. Vision & Mission Cards - Replaced CTA Band */}
+        <section className="section-shell px-4 md:px-8 bg-slate-50">
           <div className="container mx-auto">
-            <div className="final-cta-panel text-center">
-              <div className="relative z-10 space-y-6 max-w-4xl mx-auto">
-                <h3 className="text-3xl md:text-5xl font-headline font-bold">Jiunge Nasi katika Safari hii ya Kuliandaa Kanisa.</h3>
-                <p className="text-xl font-body opacity-80 max-w-2xl mx-auto">Kimbilio la kweli la kiroho linapatikana katika Neno na Uwepo wa Bwana.</p>
-                <div className="pt-8">
-                  <Button asChild size="lg" className="rounded-full bg-white text-primary hover:bg-slate-100 px-10 h-14 font-bold shadow-xl">
-                    <Link href="/contact">Wasiliana Nasi Leo</Link>
-                  </Button>
+            <SectionHeader kicker="Dira na Utume" title="Misingi ya Huduma Yetu" />
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              <Card className="rounded-[2.5rem] border-none shadow-xl bg-primary text-primary-foreground p-8 md:p-10 flex flex-col gap-6 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity"><Target className="h-32 w-32" /></div>
+                <div className="p-4 bg-white/10 rounded-2xl w-fit"><Target className="h-8 w-8 text-accent" /></div>
+                <div>
+                  <h3 className="text-2xl font-headline font-bold mb-4">Dira Yetu (Vision)</h3>
+                  <p className="text-primary-foreground/80 leading-relaxed italic">
+                    "Kanisa lililoandaliwa tayari na takatifu kwa ajili ya unyakuo wa watakatifu na kurudi kwa Bwana Yesu Kristo."
+                  </p>
                 </div>
-              </div>
+              </Card>
+
+              <Card className="rounded-[2.5rem] border-none shadow-xl bg-white p-8 md:p-10 flex flex-col gap-6 relative overflow-hidden group">
+                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity"><Compass className="h-32 w-32 text-primary" /></div>
+                <div className="p-4 bg-primary/10 rounded-2xl w-fit"><Compass className="h-8 w-8 text-primary" /></div>
+                <div>
+                  <h3 className="text-2xl font-headline font-bold text-primary mb-4">Utume Wetu (Mission)</h3>
+                  <p className="text-muted-foreground leading-relaxed italic">
+                    "Kuinua na kutoa mafunzo kwa jeshi la kiroho litakaloendesha uamsho mkubwa wa nyakati hizi za mwisho duniani kote."
+                  </p>
+                </div>
+              </Card>
+
+              <Card className="rounded-[2.5rem] border-none shadow-xl bg-accent text-accent-foreground p-8 md:p-10 flex flex-col gap-6 relative overflow-hidden group col-span-2 lg:col-span-1">
+                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity"><Heart className="h-32 w-32" /></div>
+                <div className="p-4 bg-white/10 rounded-2xl w-fit"><Heart className="h-8 w-8 text-white" /></div>
+                <div>
+                  <h3 className="text-2xl font-headline font-bold mb-4">Maadili Yetu (Values)</h3>
+                  <ul className="space-y-3 text-accent-foreground/90 font-medium">
+                    <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white" /> Utakatifu wa Kweli</li>
+                    <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white" /> Umoja wa Waamini</li>
+                    <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white" /> Uinjilisti kwa Mataifa</li>
+                  </ul>
+                </div>
+              </Card>
+            </div>
+            
+            <div className="mt-16 text-center">
+              <Button asChild size="lg" className="rounded-full bg-primary text-white hover:bg-primary/90 px-10 h-14 font-bold shadow-xl">
+                <Link href="/contact">Wasiliana Nasi Leo <ArrowRight className="ml-2 h-5 w-5" /></Link>
+              </Button>
             </div>
           </div>
         </section>
