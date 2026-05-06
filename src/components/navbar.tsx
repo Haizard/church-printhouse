@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -7,11 +8,13 @@ import { Sprout, Menu, User } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Separator } from "@/components/ui/separator";
 
 const navItems = [
   { name: "Home", href: "/" },
   { name: "Sermons", href: "/sermons" },
   { name: "Events", href: "/events" },
+  { name: "Gallery", href: "/gallery" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
 ];
@@ -118,8 +121,4 @@ export function Navbar() {
       </div>
     </nav>
   );
-}
-
-function Separator() {
-  return <div className="h-px w-full bg-border" />;
 }

@@ -33,7 +33,7 @@ export function Footer() {
           <div>
             <h3 className="font-headline font-bold text-lg mb-6">Quick Links</h3>
             <ul className="space-y-4">
-              {["Sermons", "Events", "Blog", "Contact", "About Us"].map((link) => (
+              {["Sermons", "Events", "Gallery", "Blog", "Contact"].map((link) => (
                 <li key={link}>
                   <Link href={`/${link.toLowerCase().replace(" ", "-")}`} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     {link}
