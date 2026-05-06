@@ -25,8 +25,8 @@ export function Footer() {
                 Nayoth Divine Power<br/>Christian Center
               </span>
             </Link>
-            <p className="text-[10px] text-muted-foreground leading-relaxed max-w-sm">
-              "Ngome ya Bwana kwa Makimbilio ya Watu Wake". Tumeitwa kuliandaa kanisa kwa unyakuo na kuinua jeshi la watumishi wa mwisho tangu mwaka 1992.
+            <p className="text-[10px] text-muted-foreground leading-relaxed max-sm:col-span-2">
+              "Ngome ya Bwana kwa Makimbilio ya Watu Wake". Tumeitwa kuliandaa kanisa kwa unyakuo na kuinua jeshi tangu mwaka 1992.
             </p>
             <div className="flex gap-4 mt-2">
               <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
@@ -43,42 +43,36 @@ export function Footer() {
 
           {/* Links Section */}
           <div className="col-span-1 space-y-4">
-            <h3 className="font-headline font-bold text-sm mb-4 border-l-2 border-primary pl-2">Huduma Zetu</h3>
+            <h3 className="font-headline font-bold text-sm mb-4 border-l-2 border-primary pl-2">Kurasa</h3>
             <div className="flex flex-col gap-2">
               <Link href="/" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Mwanzo</Link>
               <Link href="/about" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Kuhusu Sisi</Link>
-              <Link href="/sermons" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Neno la Bwana</Link>
+              <Link href="/sermons" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Neno</Link>
               <Link href="/events" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Matukio</Link>
-              <Link href="/gallery" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Picha za Huduma</Link>
-              <Link href="/blog" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Blogu Yetu</Link>
+              <Link href="/gallery" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Picha</Link>
             </div>
           </div>
 
           {/* Contact Section */}
           <div className="col-span-1 space-y-4">
-            <h3 className="font-headline font-bold text-sm mb-4 border-l-2 border-primary pl-2">Wasiliana Nasi</h3>
+            <h3 className="font-headline font-bold text-sm mb-4 border-l-2 border-primary pl-2">Wasiliana</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-[10px] text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary shrink-0" />
-                <span>Ramah Sanctuary, Tanzania<br/>Mwanzo Mpya Mtaa wa Kimbunga</span>
+                <span>Mwanzo Mpya, Kimbunga, Tanzania</span>
               </li>
               <li className="flex items-center gap-2 text-[10px] text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary shrink-0" />
-                <span>+255 (Huduma ya Maombezi)</span>
-              </li>
-              <li className="flex items-center gap-2 text-[10px] text-muted-foreground">
-                <Mail className="h-4 w-4 text-primary shrink-0" />
-                <span>info@ndpcc.org</span>
+                <span>+255 NDPCC</span>
               </li>
             </ul>
           </div>
         </div>
         
         <div className="mt-16 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] text-muted-foreground uppercase tracking-widest">
-          <p>© {new Date().getFullYear()} Nayoth Divine Power Christian Center. Haki zote zimehifadhiwa.</p>
+          <p>© {new Date().getFullYear()} N.D.P.C.C. Haki zote zimehifadhiwa.</p>
           <div className="flex gap-4">
             <Link href="/login" className="hover:text-primary font-bold">Staff Login</Link>
-            <Link href="#" className="hover:text-primary font-bold">Vigezo na Masharti</Link>
           </div>
         </div>
       </div>
