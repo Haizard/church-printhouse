@@ -1,0 +1,35 @@
+
+{
+  "placeholderImages": [
+    {
+      "id": "hero-church",
+      "description": "A serene church building in a forest setting",
+      "imageUrl": "https://picsum.photos/seed/church1/1200/600",
+      "imageHint": "church forest"
+    },
+    {
+      "id": "sermon-audio",
+      "description": "Microphone on a wooden pulpit",
+      "imageUrl": "https://picsum.photos/seed/sermon1/800/600",
+      "imageHint": "pulpit microphone"
+    },
+    {
+      "id": "community-gathering",
+      "description": "People gathered in a circle outdoors",
+      "imageUrl": "https://picsum.photos/seed/community1/800/600",
+      "imageHint": "community gathering"
+    },
+    {
+      "id": "nature-meditation",
+      "description": "Sunlight streaming through forest trees",
+      "imageUrl": "https://picsum.photos/seed/nature1/800/600",
+      "imageHint": "forest sunlight"
+    },
+    {
+      "id": "blog-writing",
+      "description": "An open bible and a notebook on a wooden table",
+      "imageUrl": "https://picsum.photos/seed/blog1/800/600",
+      "imageHint": "bible study"
+    }
+  ]
+}
