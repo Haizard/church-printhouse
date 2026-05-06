@@ -29,7 +29,6 @@ import Link from "next/link";
 // Static imports for high contrast local images
 import IdentityImage from "@/images/_B4A1451.jpg";
 import CommunityImageOne from "@/images/_B4A1466.jpg";
-import WorshipImage from "@/images/_B4A1779.jpg";
 
 export default function AboutPage() {
   const pillars = [
@@ -55,27 +54,29 @@ export default function AboutPage() {
       <Navbar />
       
       <main className="flex-grow">
-        {/* Hero Section - Full Image Visibility */}
-        <section className="relative py-32 md:py-48 bg-black text-white overflow-hidden">
+        {/* Hero Section */}
+        <section className="relative h-[60vh] min-h-[400px] bg-black text-white overflow-hidden">
           <div className="absolute inset-0">
             <Image 
               src={IdentityImage} 
               alt="About NDPCC" 
               fill 
-              className="object-contain"
+              className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute inset-0 bg-black/40" />
           </div>
-          <div className="container mx-auto px-4 text-center relative z-10">
-            <h1 className="text-5xl md:text-8xl font-headline font-bold mb-6 drop-shadow-2xl">Kuhusu N.D.P.C.C.</h1>
-            <p className="text-xl md:text-3xl opacity-90 max-w-3xl mx-auto font-light leading-relaxed italic drop-shadow-lg">
-              "Ngome ya Bwana kwa Makimbilio ya Watu Wake"
-            </p>
+          <div className="container mx-auto px-4 h-full flex items-center justify-center text-center relative z-10">
+            <div className="max-w-3xl">
+              <h1 className="text-5xl md:text-8xl font-headline font-bold mb-6 drop-shadow-2xl">Kuhusu N.D.P.C.C.</h1>
+              <p className="text-xl md:text-3xl opacity-90 font-light leading-relaxed italic drop-shadow-lg">
+                "Ngome ya Bwana kwa Makimbilio ya Watu Wake"
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Vision Pillars Grid - 2 items mobile, 3 items desktop */}
+        {/* Vision Pillars Grid */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <header className="text-center mb-16">
@@ -99,21 +100,20 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Detailed Content with High Contrast Background Image - Full Image Visibility */}
+        {/* Detailed Content with High Contrast Background Image */}
         <section className="relative py-24 md:py-32 overflow-hidden bg-black">
           <div className="absolute inset-0">
             <Image 
               src={CommunityImageOne} 
               alt="Church Life" 
               fill 
-              className="object-contain opacity-50"
+              className="object-cover opacity-60"
             />
           </div>
           
           <div className="container mx-auto px-4 md:px-8 max-w-4xl relative z-10">
             <Accordion type="single" collapsible className="w-full space-y-6">
               
-              {/* Historia Section */}
               <AccordionItem value="history" className="bg-white/95 border-none rounded-[2.5rem] px-8 shadow-2xl">
                 <AccordionTrigger className="hover:no-underline py-8">
                   <div className="flex items-center gap-5 text-left">
@@ -129,19 +129,15 @@ export default function AboutPage() {
                 <AccordionContent className="pb-10 pt-2">
                   <div className="prose prose-slate max-w-none text-muted-foreground space-y-6 text-base md:text-lg leading-relaxed">
                     <p>
-                      Mungu alianza kusema na mtumishi wake juu ya utumishi huu mwaka wa <strong>1992</strong>. Katika kipindi hicho, Bwana alionyesha maono ya kazi kubwa nitakayoifanya duniani kuliandaa kanisa lake.
-                    </p>
-                    <p>
-                      Tangu wakati huo, niliendelea kumtumikia Mungu kwa uaminifu chini ya maelekezo yake, nikifanya kazi ya kuliandaa kanisa bila jina rasmi, hadi ilipofika mwaka wa <strong>2008</strong>, ambapo Bwana alitoa jina rasmi la huduma.
+                      Mungu alianza kusema na mtumishi wake juu ya utumishi huu mwaka wa 1992. Bwana alionyesha maono ya kazi kubwa nitakayoifanya duniani kuliandaa kanisa lake.
                     </p>
                     <div className="bg-primary/5 p-8 rounded-[2rem] border-l-8 border-primary font-headline italic text-primary text-xl">
-                      "Jina NAYOTH lina maana ya 'Ngome ya Bwana kwa Makimbilio ya Watu Wake'. Ni mahali ambapo kila mwenye uhitaji anapata kimbilio la kiroho na kimwili."
+                      "Jina NAYOTH lina maana ya 'Ngome ya Bwana kwa Makimbilio ya Watu Wake'."
                     </div>
                   </div>
                 </AccordionContent>
               </AccordionItem>
 
-              {/* Ujumbe na Maono Section */}
               <AccordionItem value="vision" className="bg-white/95 border-none rounded-[2.5rem] px-8 shadow-2xl">
                 <AccordionTrigger className="hover:no-underline py-8">
                   <div className="flex items-center gap-5 text-left">
@@ -158,21 +154,16 @@ export default function AboutPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-base md:text-lg text-muted-foreground">
                     <div className="space-y-4">
                       <h4 className="font-bold text-primary flex items-center gap-2 text-xl"><Shield className="h-5 w-5" /> Kuliandaa Kanisa</h4>
-                      <p>Tunafanya kazi ya kuliandaa kanisa kwa ajili ya unyakuo wa watakatifu kupitia mahubiri, semina, mikutano ya nje, na kupitia vyombo vya habari (Redio na TV).</p>
+                      <p>Tunafanya kazi ya kuliandaa kanisa kwa ajili ya unyakuo kupitia mahubiri, semina, na mikutano.</p>
                     </div>
                     <div className="space-y-4">
-                      <h4 className="font-bold text-primary flex items-center gap-2 text-xl"><Swords className="h-5 w-5" /> Kuinua Jeshi la Kiroho</h4>
-                      <p>Kuinua jeshi la kiroho litakaloendesha uamsho mkubwa katika nyakati hizi za mwisho kupitia mafunzo ya watumishi wa Mungu na mafundisho ya kweli.</p>
-                    </div>
-                    <div className="col-span-full space-y-4 border-t pt-6">
-                      <h4 className="font-bold text-primary flex items-center gap-2 text-xl"><Globe className="h-5 w-5" /> Uinjilisti kwa Mataifa</h4>
-                      <p>Kuhakikisha injili ya ufalme inafika kila mahali, ndani na nje ya nchi, kwa uweza wa Roho Mtakatifu ili kuliandaa kanisa la Bwana kote duniani.</p>
+                      <h4 className="font-bold text-primary flex items-center gap-2 text-xl"><Swords className="h-5 w-5" /> Kuinua Jeshi</h4>
+                      <p>Kuinua jeshi la kiroho litakaloendesha uamsho mkubwa katika nyakati hizi za mwisho.</p>
                     </div>
                   </div>
                 </AccordionContent>
               </AccordionItem>
 
-              {/* Foundation Section */}
               <AccordionItem value="foundation" className="bg-white/95 border-none rounded-[2.5rem] px-8 shadow-2xl">
                 <AccordionTrigger className="hover:no-underline py-8">
                   <div className="flex items-center gap-5 text-left">
@@ -187,27 +178,17 @@ export default function AboutPage() {
                 </AccordionTrigger>
                 <AccordionContent className="pb-10 pt-2">
                   <div className="space-y-8">
-                    <p className="text-lg text-muted-foreground italic border-l-4 border-accent pl-6">"Huduma yetu haishii madhabahuni tu; tunakwenda mtaani kuwasaidia wahitaji zaidi kupitia taasisi yetu ya Gibea of God Nayoth Foundation."</p>
+                    <p className="text-lg text-muted-foreground italic border-l-4 border-accent pl-6">"Huduma yetu haishii madhabahuni tu; tunakwenda mtaani kuwasaidia wahitaji zaidi."</p>
                     <div className="grid grid-cols-2 gap-6">
-                      <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:bg-accent hover:text-white transition-all duration-300">
-                        <Users className="h-6 w-6 text-accent group-hover:text-white mb-4" />
+                      <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 group">
+                        <Users className="h-6 w-6 text-accent mb-4" />
                         <h5 className="font-bold text-base mb-2">Kusaidia Wajane</h5>
-                        <p className="text-xs opacity-90">Kuwapatia misaada ya kujiendeleza na kuwategemeza kiroho na kimwili.</p>
+                        <p className="text-xs opacity-90">Kuwapatia misaada ya kujiendeleza na kuwategemeza.</p>
                       </div>
-                      <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:bg-accent hover:text-white transition-all duration-300">
-                        <Heart className="h-6 w-6 text-accent group-hover:text-white mb-4" />
+                      <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 group">
+                        <Heart className="h-6 w-6 text-accent mb-4" />
                         <h5 className="font-bold text-base mb-2">Huduma kwa Mayatima</h5>
-                        <p className="text-xs opacity-90">Kutoa hifadhi, chakula, na upendo kwa watoto wasio na wazazi.</p>
-                      </div>
-                      <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:bg-accent hover:text-white transition-all duration-300">
-                        <GraduationCap className="h-6 w-6 text-accent group-hover:text-white mb-4" />
-                        <h5 className="font-bold text-base mb-2">Elimu na Mafunzo</h5>
-                        <p className="text-xs opacity-90">Kutoa ufadhili wa masomo na mafunzo ya ufundi stadi kwa vijana.</p>
-                      </div>
-                      <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 group hover:bg-accent hover:text-white transition-all duration-300">
-                        <Globe className="h-6 w-6 text-accent group-hover:text-white mb-4" />
-                        <h5 className="font-bold text-base mb-2">Misheni za Nje</h5>
-                        <p className="text-xs opacity-90">Kuendesha mikutano ya injili vijijini na kusaidia jamii zilizo mbali.</p>
+                        <p className="text-xs opacity-90">Kutoa hifadhi, chakula, na upendo.</p>
                       </div>
                     </div>
                   </div>
@@ -217,12 +198,12 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Call to Action - Solid Background for maximum readability */}
-        <section className="relative py-32 bg-primary text-white overflow-hidden">
-          <div className="container mx-auto px-4 text-center relative z-10">
+        {/* Final CTA */}
+        <section className="py-32 bg-primary text-white">
+          <div className="container mx-auto px-4 text-center">
             <div className="max-w-4xl mx-auto space-y-10">
               <Cross className="h-16 w-16 text-accent mx-auto mb-4" />
-              <h2 className="text-4xl md:text-6xl font-headline font-bold leading-tight drop-shadow-2xl">
+              <h2 className="text-4xl md:text-6xl font-headline font-bold leading-tight">
                 "Siionei haya Injili kwa maana ni uweza wa Mungu uletao wokovu kwa kila aaminiye."
               </h2>
               <p className="text-3xl font-bold text-accent tracking-widest uppercase">WARUMI 1:16</p>

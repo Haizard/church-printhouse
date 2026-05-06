@@ -17,7 +17,7 @@ import Img2 from "@/images/_B4A1779.jpg";
 import Img3 from "@/images/_B4A1507.jpg";
 import Img4 from "@/images/_B4A1498.jpg";
 import Img5 from "@/images/_B4A1527.jpg";
-import Img6 from "@/images/_B4A1581.jpg";
+import Img6 caught from "@/images/_B4A1581.jpg";
 import Img7 from "@/images/_B4A1466.jpg";
 import Img8 from "@/images/_B4A7030.jpg";
 import Img9 from "@/images/_B4A1752.jpg";
@@ -37,28 +37,27 @@ const CATEGORIES = ["All", "Ibada", "Huduma", "Ushirika", "Mikutano"];
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState("All");
 
-  // Creating a list of exactly 20 items using available local images
   const galleryItems: GalleryItem[] = [
-    { id: 1, title: "Ibada ya Sifa", category: "Ibada", image: Img1, description: "Nyakati za kumsifu Bwana kwa nyimbo na mapambio." },
-    { id: 2, title: "Neno la Uzima", category: "Huduma", image: Img2, description: "Mafundisho ya kina kutoka kwa watumishi wa Mungu." },
-    { id: 3, title: "Umoja wa Waamini", category: "Ushirika", image: Img3, description: "Waamini wakishirikiana katika upendo wa Kristo." },
-    { id: 4, title: "Maombi ya Pamoja", category: "Ibada", image: Img4, description: "Kuliandaa kanisa kupitia magoti and unyenyekevu." },
+    { id: 1, title: "Ibada ya Sifa", category: "Ibada", image: Img1, description: "Nyakati za kumsifu Bwana kwa nyimbo." },
+    { id: 2, title: "Neno la Uzima", category: "Huduma", image: Img2, description: "Mafundisho ya kina kutoka kwa watumishi." },
+    { id: 3, title: "Umoja wa Waamini", category: "Ushirika", image: Img3, description: "Waamini wakishirikiana katika upendo." },
+    { id: 4, title: "Maombi ya Pamoja", category: "Ibada", image: Img4, description: "Kuliandaa kanisa kupitia unyenyekevu." },
     { id: 5, title: "Mkutano wa Nje", category: "Mikutano", image: Img5, description: "Kufikisha injili ya ufalme kwa mataifa yote." },
-    { id: 6, title: "Semina ya Vijana", category: "Huduma", image: Img6, description: "Kuinua jeshi la kiroho katika kizazi hiki." },
+    { id: 6, title: "Semina ya Vijana", category: "Huduma", image: Img11, description: "Kuinua jeshi la kiroho katika kizazi hiki." },
     { id: 7, title: "Siku ya Shukurani", category: "Ibada", image: Img7, description: "Kumshukuru Bwana kwa makuu aliyotutendea." },
-    { id: 8, title: "Ushirika wa Meza", category: "Ushirika", image: Img8, description: "Kuvunja mkate na kushiriki baraka za Bwana." },
+    { id: 8, title: "Ushirika wa Meza", category: "Ushirika", image: Img8, description: "Kuvunja mkate na kushiriki baraka." },
     { id: 9, title: "Huduma ya Jamii", category: "Huduma", image: Img9, description: "Kusaidia wahitaji kupitia Gibea Foundation." },
     { id: 10, title: "Maandalizi ya Kiroho", category: "Huduma", image: Img10, description: "Kujiandaa kwa ajili ya unyakuo wa watakatifu." },
     { id: 11, title: "Uamsho wa Kiroho", category: "Ibada", image: Img11, description: "Nguvu ya Roho Mtakatifu ikishuka katikati yetu." },
-    { id: 12, title: "Mkutano wa Injili", category: "Mikutano", image: Img1, description: "Kuhubiri habari njema mitaani na vijijini." },
-    { id: 13, title: "Kwaya ya NDPCC", category: "Ibada", image: Img2, description: "Uimbaji unaogusa mioyo na kuinua roho." },
-    { id: 14, title: "Mafunzo ya Biblia", category: "Huduma", image: Img3, description: "Kuchunguza maandiko kwa ajili ya ukuaji wa imani." },
+    { id: 12, title: "Mkutano wa Injili", category: "Mikutano", image: Img1, description: "Kuhubiri habari njema mitaani." },
+    { id: 13, title: "Kwaya ya NDPCC", category: "Ibada", image: Img2, description: "Uimbaji unaogusa mioyo." },
+    { id: 14, title: "Mafunzo ya Biblia", category: "Huduma", image: Img3, description: "Kuchunguza maandiko kwa ajili ya ukuaji." },
     { id: 15, title: "Siku ya Watoto", category: "Ushirika", image: Img4, description: "Kuinua watoto katika njia ya Bwana." },
     { id: 16, title: "Huduma ya Wanawake", category: "Huduma", image: Img5, description: "Kuinua wanawake wenye nguvu katika imani." },
-    { id: 17, title: "Ubatizo wa Maji", category: "Huduma", image: Img6, description: "Kuzikwa na Kristo na kufufuka katika upya wa uzima." },
-    { id: 18, title: "Mkesha wa Mwaka", category: "Ibada", image: Img7, description: "Kuanza mwaka mpya kwa ushindi." },
-    { id: 19, title: "Semina ya Ndoa", category: "Huduma", image: Img8, description: "Kujenga familia zilizoimarika katika Kristo." },
-    { id: 20, title: "Safari ya Misheni", category: "Mikutano", image: Img9, description: "Kufikisha injili ya ufalme kwa mataifa yote." },
+    { id: 17, title: "Ubatizo wa Maji", category: "Huduma", image: Img7, description: "Kuzikwa na Kristo na kufufuka katika upya wa uzima." },
+    { id: 18, title: "Mkesha wa Mwaka", category: "Ibada", image: Img8, description: "Kuanza mwaka mpya kwa ushindi." },
+    { id: 19, title: "Semina ya Ndoa", category: "Huduma", image: Img9, description: "Kujenga familia zilizoimarika katika Kristo." },
+    { id: 20, title: "Safari ya Misheni", category: "Mikutano", image: Img10, description: "Kufikisha injili ya ufalme kwa mataifa yote." },
   ];
 
   const filteredItems = galleryItems.filter(
@@ -93,13 +92,12 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        {/* 2 items mobile, 3 items desktop grid - Full Image Visibility */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {filteredItems.map((item) => (
             <Dialog key={item.id}>
               <DialogTrigger asChild>
                 <Card className="group relative aspect-square overflow-hidden border-none cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 rounded-[2rem] bg-slate-100">
-                  <Image src={item.image} alt={item.title} fill className="object-contain group-hover:scale-105 transition-transform duration-700" />
+                  <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
                     <Badge className="w-fit mb-2 bg-white/20 backdrop-blur-md border-white/30 text-white text-[8px] px-2 py-0">{item.category}</Badge>
                     <h3 className="text-white font-headline font-bold text-base line-clamp-1">{item.title}</h3>

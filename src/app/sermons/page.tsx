@@ -68,7 +68,7 @@ export default function SermonsPage() {
             {filteredSermons.map(sermon => (
               <Card key={sermon.id} className="overflow-hidden border-none shadow-sm hover:shadow-md transition-all group bg-white flex flex-col">
                 <div className="relative aspect-video bg-slate-100">
-                  <Image src={sermon.image || sermon.imageUrl || HeroImageOne} alt={sermon.title} fill className="object-contain group-hover:scale-105 transition-transform duration-500" />
+                  <Image src={sermon.image || sermon.imageUrl || HeroImageOne} alt={sermon.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors flex items-center justify-center">
                     <div className="bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/30 scale-0 group-hover:scale-100 transition-transform"><Play className="h-4 w-4 text-white fill-white" /></div>
                   </div>
