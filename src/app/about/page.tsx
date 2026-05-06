@@ -55,17 +55,17 @@ export default function AboutPage() {
       <Navbar />
       
       <main className="flex-grow">
-        {/* Hero Section - High Contrast */}
+        {/* Hero Section - High Contrast, Clear Image */}
         <section className="relative py-32 md:py-48 bg-black text-white overflow-hidden">
           <div className="absolute inset-0">
             <Image 
               src={IdentityImage} 
               alt="About NDPCC" 
               fill 
-              className="object-cover opacity-60"
+              className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-black/30" />
           </div>
           <div className="container mx-auto px-4 text-center relative z-10">
             <h1 className="text-5xl md:text-8xl font-headline font-bold mb-6 drop-shadow-2xl">Kuhusu N.D.P.C.C.</h1>
@@ -218,12 +218,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Call to Action - High Contrast Background */}
-        <section className="relative py-32 bg-black text-white overflow-hidden">
-          <div className="absolute inset-0">
-            <Image src={WorshipImage} alt="Worship" fill className="object-cover opacity-50" />
-            <div className="absolute inset-0 bg-primary/40 backdrop-blur-sm" />
-          </div>
+        {/* Call to Action - Solid Background */}
+        <section className="relative py-32 bg-primary text-white overflow-hidden">
           <div className="container mx-auto px-4 text-center relative z-10">
             <div className="max-w-4xl mx-auto space-y-10">
               <Cross className="h-16 w-16 text-accent mx-auto mb-4" />

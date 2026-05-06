@@ -104,14 +104,14 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-grow">
-        {/* 1. Hero Slider - No dark overlay */}
+        {/* 1. Hero Slider - Clear Images */}
         <section className="hero-section relative h-[85vh] min-h-[600px] overflow-hidden">
           <Carousel plugins={[Autoplay({ delay: 6000 })]} className="h-full w-full" opts={{ loop: true }}>
             <CarouselContent className="h-full">
               {heroSlides.map((slide, index) => (
                 <CarouselItem key={index} className="relative h-full basis-full">
                   <Image src={slide.image} alt={slide.title} fill priority className="object-cover" />
-                  <div className="absolute inset-0 bg-black/10" /> 
+                  <div className="absolute inset-0 bg-black/5" /> 
                   <div className="hero-shell absolute inset-0 px-4 md:px-8">
                     <div className="container mx-auto flex h-full items-center">
                       <div className="hero-copy max-w-4xl">
@@ -194,7 +194,7 @@ export default function Home() {
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Ushirika Wetu" title="Matukio Yajayo" actionHref="/events" actionText="Ona Yote" />
             <Carousel className="w-full">
-              <CarouselContent className="-ml-4">
+              <CarouselContent className="-ml-4" opts={{ align: "start" }}>
                 {sampleEvents.map((event) => (
                   <CarouselItem key={event.id} className="basis-1/2 lg:basis-1/3 pl-4">
                     <Card className="event-editorial-card h-full rounded-[2.5rem] border border-primary/5 bg-slate-50/50 hover:shadow-xl transition-all">
@@ -215,20 +215,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 5. Worship / Scripture Highlight - High Contrast */}
-        <section className="section-shell relative overflow-hidden bg-black text-white min-h-[400px] flex items-center">
-          <div className="absolute inset-0">
-            <Image 
-              src={WorshipImage} 
-              alt="Worship" 
-              fill 
-              className="object-cover opacity-70" 
-            />
-          </div>
-          <div className="container mx-auto px-4 text-center relative z-10">
+        {/* 5. Worship / Scripture Highlight - Solid Background */}
+        <section className="section-shell bg-primary text-white min-h-[300px] flex items-center">
+          <div className="container mx-auto px-4 text-center">
             <div className="max-w-4xl mx-auto space-y-8">
               <Cross className="h-14 w-14 text-accent mx-auto mb-4" />
-              <h2 className="text-3xl md:text-5xl font-headline font-bold leading-tight drop-shadow-2xl">
+              <h2 className="text-3xl md:text-5xl font-headline font-bold leading-tight">
                 "Siionei haya Injili kwa maana ni uweza wa Mungu uletao wokovu kwa kila aaminiye."
               </h2>
               <p className="text-2xl font-bold text-accent tracking-widest uppercase mt-4">WARUMI 1:16</p>
@@ -241,7 +233,7 @@ export default function Home() {
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Neno la Bwana" title="Mahubiri Mapya" actionHref="/sermons" actionText="Ona Yote" />
             <Carousel className="w-full">
-              <CarouselContent className="-ml-4">
+              <CarouselContent className="-ml-4" opts={{ align: "start" }}>
                 {sampleSermons.map((sermon) => (
                   <CarouselItem key={sermon.id} className="basis-1/2 lg:basis-1/3 pl-4">
                     <Card className="sermon-feature-card h-full border-none bg-white shadow-lg overflow-hidden rounded-[2.5rem] group">
@@ -283,7 +275,7 @@ export default function Home() {
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Tafakari Yetu" title="Makala za Blogu" actionHref="/blog" actionText="Soma Yote" />
             <Carousel className="w-full">
-              <CarouselContent className="-ml-4">
+              <CarouselContent className="-ml-4" opts={{ align: "start" }}>
                 {sampleBlogs.map((blog) => (
                   <CarouselItem key={blog.id} className="basis-1/2 lg:basis-1/3 pl-4">
                     <Card className="rounded-[2.5rem] border-none shadow-sm overflow-hidden bg-white flex flex-col h-full hover:shadow-xl transition-all">
@@ -302,7 +294,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 9. Vision & Mission Cards - Replaces old CTA */}
+        {/* 9. Vision & Mission Cards */}
         <section className="section-shell px-4 md:px-8 bg-white border-t">
           <div className="container mx-auto">
             <SectionHeader kicker="Dira na Utume" title="Misingi ya Huduma Yetu" />
