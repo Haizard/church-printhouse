@@ -40,11 +40,11 @@ export default function Home() {
               A community rooted in faith, growing in grace, and finding peace in the presence of God.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom-12 duration-1000">
-              <Button size="lg" className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                Join Us This Sunday
+              <Button size="lg" className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground" asChild>
+                <Link href="/contact">Join Us This Sunday</Link>
               </Button>
-              <Button size="lg" variant="outline" className="rounded-full bg-white/10 hover:bg-white/20 border-white text-white">
-                Explore Sermons
+              <Button size="lg" variant="outline" className="rounded-full bg-white/10 hover:bg-white/20 border-white text-white" asChild>
+                <Link href="/sermons">Explore Sermons</Link>
               </Button>
             </div>
           </div>
@@ -91,7 +91,7 @@ export default function Home() {
             <div className="flex flex-col md:flex-row items-center gap-16">
               <div className="flex-1">
                 <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl group">
-                  {sermonImage?.imageUrl && (
+                  {sermonImage?.imageUrl ? (
                     <Image
                       src={sermonImage.imageUrl}
                       alt="Latest Sermon"
@@ -99,6 +99,10 @@ export default function Home() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       data-ai-hint="pulpit microphone"
                     />
+                  ) : (
+                    <div className="w-full h-full bg-muted flex items-center justify-center">
+                      <Play className="h-10 w-10 text-muted-foreground" />
+                    </div>
                   )}
                   <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
                     <div className="bg-white/20 backdrop-blur-md p-6 rounded-full border border-white/30 hover:scale-110 transition-transform cursor-pointer">
@@ -117,8 +121,8 @@ export default function Home() {
                   <Button asChild className="rounded-full">
                     <Link href="/sermons">Watch Now</Link>
                   </Button>
-                  <Button variant="outline" className="rounded-full border-primary text-primary hover:bg-primary/5">
-                    Sermon Archive
+                  <Button variant="outline" className="rounded-full border-primary text-primary hover:bg-primary/5" asChild>
+                    <Link href="/sermons">Sermon Archive</Link>
                   </Button>
                 </div>
               </div>
@@ -159,7 +163,9 @@ export default function Home() {
                     <p className="text-muted-foreground">{event.desc}</p>
                   </CardContent>
                   <CardFooter>
-                    <Button variant="link" className="p-0 text-primary">Learn More</Button>
+                    <Button variant="link" className="p-0 text-primary" asChild>
+                      <Link href="/events">Learn More</Link>
+                    </Button>
                   </CardFooter>
                 </Card>
               ))}
@@ -182,7 +188,7 @@ export default function Home() {
                 </Button>
               </div>
               <div className="relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-                {blogImage?.imageUrl && (
+                {blogImage?.imageUrl ? (
                   <Image
                     src={blogImage.imageUrl}
                     alt="Blog Preview"
@@ -190,6 +196,8 @@ export default function Home() {
                     className="object-cover"
                     data-ai-hint="bible study"
                   />
+                ) : (
+                  <div className="w-full h-full bg-primary/20" />
                 )}
               </div>
             </div>
