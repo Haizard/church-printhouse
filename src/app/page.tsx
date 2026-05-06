@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -22,7 +21,7 @@ export default function Home() {
   const heroSlides = [
     { image: "hero-1", title: "Nayoth Divine Power Christian Center", sub: "Ngome ya Bwana kwa Makimbilio ya Watu Wake" },
     { image: "hero-2", title: "Kuliandaa Kanisa", sub: "Kwa ajili ya unyakuo wa watakatifu" },
-    { image: "hero-3", title: "Kuinua Jeshi la Bwana", sub: "Mafunzo na uamsho kwa watumishi wote" },
+    { image: "hero-3", title: "Kuinua Jeshi la Bwana", sub: "Mafunzo and uamsho kwa watumishi wote" },
     { image: "hero-4", title: "Injili kwa Mataifa", sub: "Kuwafikia wengi kwa uweza wa Mungu" },
   ];
 
