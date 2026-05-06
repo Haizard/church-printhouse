@@ -6,7 +6,6 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Shield, Swords, Globe, Calendar, ArrowRight, Clock, Sparkles } from "lucide-react";
 import { useFirestore, useCollection } from "@/firebase";
 import { collection, query, limit, orderBy } from "firebase/firestore";
@@ -14,6 +13,10 @@ import { useMemo } from "react";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { Badge } from "@/components/ui/badge";
+import HeroImageOne from "@/images/_B4A1507.jpg";
+import HeroImageTwo from "@/images/_B4A1498.jpg";
+import HeroImageThree from "@/images/_B4A1527.jpg";
+import HeroImageFour from "@/images/_B4A1581.jpg";
 
 function SectionHeader({
   kicker,
@@ -45,10 +48,10 @@ export default function Home() {
   const db = useFirestore();
 
   const heroSlides = [
-    { image: "hero-1", title: "Nayoth Divine Power Christian Center", sub: "Ngome ya Bwana kwa Makimbilio ya Watu Wake" },
-    { image: "hero-2", title: "Kuliandaa Kanisa", sub: "Kwa ajili ya unyakuo wa watakatifu" },
-    { image: "hero-3", title: "Kuinua Jeshi la Bwana", sub: "Mafunzo na uamsho kwa watumishi wote" },
-    { image: "hero-4", title: "Injili kwa Mataifa", sub: "Kuwafikia wengi kwa uweza wa Mungu" },
+    { image: HeroImageOne, title: "Nayoth Divine Power Christian Center", sub: "Ngome ya Bwana kwa Makimbilio ya Watu Wake", hint: "church worship" },
+    { image: HeroImageTwo, title: "Kuliandaa Kanisa", sub: "Kwa ajili ya unyakuo wa watakatifu", hint: "prayer service" },
+    { image: HeroImageThree, title: "Kuinua Jeshi la Bwana", sub: "Mafunzo na uamsho kwa watumishi wote", hint: "church gathering" },
+    { image: HeroImageFour, title: "Injili kwa Mataifa", sub: "Kuwafikia wengi kwa uweza wa Mungu", hint: "community church" },
   ];
 
   const sermonsQuery = useMemo(() => db ? query(collection(db, "sermons"), orderBy("date", "desc"), limit(6)) : null, [db]);
@@ -72,16 +75,15 @@ export default function Home() {
           >
             <CarouselContent className="h-full">
               {heroSlides.map((slide, index) => {
-                const img = PlaceHolderImages.find(i => i.id === slide.image);
                 return (
                   <CarouselItem key={index} className="relative h-full basis-full">
                     <Image
-                      src={img?.imageUrl || `https://picsum.photos/seed/${index}/1200/800`}
+                      src={slide.image}
                       alt={slide.title}
                       fill
                       className="object-cover"
                       priority
-                      data-ai-hint={img?.imageHint}
+                      data-ai-hint={slide.hint}
                     />
                     <div className="hero-overlay absolute inset-0" />
                     <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background/45 to-transparent" />
