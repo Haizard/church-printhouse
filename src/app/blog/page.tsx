@@ -67,8 +67,8 @@ export default function BlogPage() {
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {filteredPosts.map((post) => (
               <Card key={post.id} className="overflow-hidden border-none shadow-sm hover:shadow-md transition-all group bg-white flex flex-col">
-                <div className="relative aspect-[16/10]">
-                  <Image src={post.image || post.imageUrl || BlogFeatureImageOne} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="relative aspect-[16/10] bg-slate-100">
+                  <Image src={post.image || post.imageUrl || BlogFeatureImageOne} alt={post.title} fill className="object-contain group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-4 md:p-6 flex flex-col flex-grow">
                   <Badge variant="secondary" className="bg-primary/5 text-primary text-[10px] font-bold w-fit mb-2">{post.category}</Badge>

@@ -42,7 +42,7 @@ export default function GalleryPage() {
     { id: 1, title: "Ibada ya Sifa", category: "Ibada", image: Img1, description: "Nyakati za kumsifu Bwana kwa nyimbo na mapambio." },
     { id: 2, title: "Neno la Uzima", category: "Huduma", image: Img2, description: "Mafundisho ya kina kutoka kwa watumishi wa Mungu." },
     { id: 3, title: "Umoja wa Waamini", category: "Ushirika", image: Img3, description: "Waamini wakishirikiana katika upendo wa Kristo." },
-    { id: 4, title: "Maombi ya Pamoja", category: "Ibada", image: Img4, description: "Kuliandaa kanisa kupitia magoti na unyenyekevu." },
+    { id: 4, title: "Maombi ya Pamoja", category: "Ibada", image: Img4, description: "Kuliandaa kanisa kupitia magoti and unyenyekevu." },
     { id: 5, title: "Mkutano wa Nje", category: "Mikutano", image: Img5, description: "Kufikisha injili ya ufalme kwa mataifa yote." },
     { id: 6, title: "Semina ya Vijana", category: "Huduma", image: Img6, description: "Kuinua jeshi la kiroho katika kizazi hiki." },
     { id: 7, title: "Siku ya Shukurani", category: "Ibada", image: Img7, description: "Kumshukuru Bwana kwa makuu aliyotutendea." },
@@ -93,14 +93,14 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        {/* 2 items mobile, 3 items desktop grid */}
+        {/* 2 items mobile, 3 items desktop grid - Full Image Visibility */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {filteredItems.map((item) => (
             <Dialog key={item.id}>
               <DialogTrigger asChild>
-                <Card className="group relative aspect-square overflow-hidden border-none cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 rounded-[2rem]">
-                  <Image src={item.image} alt={item.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                <Card className="group relative aspect-square overflow-hidden border-none cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 rounded-[2rem] bg-slate-100">
+                  <Image src={item.image} alt={item.title} fill className="object-contain group-hover:scale-105 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
                     <Badge className="w-fit mb-2 bg-white/20 backdrop-blur-md border-white/30 text-white text-[8px] px-2 py-0">{item.category}</Badge>
                     <h3 className="text-white font-headline font-bold text-base line-clamp-1">{item.title}</h3>
                     <Maximize2 className="absolute top-4 right-4 text-white/50 h-4 w-4" />

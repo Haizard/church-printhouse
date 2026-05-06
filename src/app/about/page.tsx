@@ -55,18 +55,17 @@ export default function AboutPage() {
       <Navbar />
       
       <main className="flex-grow">
-        {/* Hero Section - Maximum Contrast, No Dimming */}
+        {/* Hero Section - Full Image Visibility */}
         <section className="relative py-32 md:py-48 bg-black text-white overflow-hidden">
           <div className="absolute inset-0">
             <Image 
               src={IdentityImage} 
               alt="About NDPCC" 
               fill 
-              className="object-cover"
+              className="object-contain"
               priority
             />
-            {/* Very minimal overlay just for text shadow safety */}
-            <div className="absolute inset-0 bg-black/5" />
+            <div className="absolute inset-0 bg-black/30" />
           </div>
           <div className="container mx-auto px-4 text-center relative z-10">
             <h1 className="text-5xl md:text-8xl font-headline font-bold mb-6 drop-shadow-2xl">Kuhusu N.D.P.C.C.</h1>
@@ -100,17 +99,15 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Detailed Content with High Contrast Background Image */}
-        <section className="relative py-24 md:py-32 overflow-hidden">
+        {/* Detailed Content with High Contrast Background Image - Full Image Visibility */}
+        <section className="relative py-24 md:py-32 overflow-hidden bg-black">
           <div className="absolute inset-0">
             <Image 
               src={CommunityImageOne} 
               alt="Church Life" 
               fill 
-              className="object-cover"
+              className="object-contain opacity-50"
             />
-            {/* Removed blur and high-opacity color to maintain image contrast */}
-            <div className="absolute inset-0 bg-black/10" />
           </div>
           
           <div className="container mx-auto px-4 md:px-8 max-w-4xl relative z-10">
