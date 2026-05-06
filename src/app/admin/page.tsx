@@ -57,7 +57,7 @@ export default function AdminDashboard() {
             </Button>
           </header>
 
-          {/* Stats Grid strictly following the rule: 2 on mobile, 3 on desktop */}
+          {/* Stats Grid: 2 on mobile, 3 on desktop */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
             {stats.map((stat, i) => (
               <Link href={stat.href} key={i}>
@@ -107,10 +107,10 @@ export default function AdminDashboard() {
               <Card className="border-none shadow-sm bg-primary text-primary-foreground p-6 rounded-2xl">
                 <h3 className="font-bold mb-4">Quick Links</h3>
                 <div className="grid grid-cols-2 lg:grid-cols-1 gap-2">
-                  <Button asChild variant="secondary" className="text-xs h-9 justify-start"><Link href="/admin/sermons">Sermons</Link></Button>
-                  <Button asChild variant="secondary" className="text-xs h-9 justify-start"><Link href="/admin/events">Events</Link></Button>
-                  <Button asChild variant="secondary" className="text-xs h-9 justify-start"><Link href="/admin/blog">Blog</Link></Button>
-                  <Button asChild variant="secondary" className="text-xs h-9 justify-start"><Link href="/admin/gallery">Gallery</Link></Button>
+                  <Button asChild variant="secondary" className="text-xs h-9 justify-start w-full"><Link href="/admin/sermons">Sermons</Link></Button>
+                  <Button asChild variant="secondary" className="text-xs h-9 justify-start w-full"><Link href="/admin/events">Events</Link></Button>
+                  <Button asChild variant="secondary" className="text-xs h-9 justify-start w-full"><Link href="/admin/blog">Blog</Link></Button>
+                  <Button asChild variant="secondary" className="text-xs h-9 justify-start w-full"><Link href="/admin/gallery">Gallery</Link></Button>
                 </div>
               </Card>
             </div>

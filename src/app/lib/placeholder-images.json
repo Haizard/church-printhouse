@@ -4,56 +4,56 @@
     {
       "id": "hero-1",
       "description": "N.D.P.C.C. Main Slider 1",
-      "imageUrl": "/images/hero1.png",
-      "imageHint": "church slide"
+      "imageUrl": "https://picsum.photos/seed/church1/1200/800",
+      "imageHint": "church prayer"
     },
     {
       "id": "hero-2",
       "description": "N.D.P.C.C. Main Slider 2",
-      "imageUrl": "/images/hero2.png",
-      "imageHint": "worship slide"
+      "imageUrl": "https://picsum.photos/seed/worship1/1200/800",
+      "imageHint": "worship music"
     },
     {
       "id": "hero-3",
       "description": "N.D.P.C.C. Main Slider 3",
-      "imageUrl": "/images/hero3.png",
-      "imageHint": "community slide"
+      "imageUrl": "https://picsum.photos/seed/community1/1200/800",
+      "imageHint": "people laughing"
     },
     {
       "id": "hero-4",
       "description": "N.D.P.C.C. Main Slider 4",
-      "imageUrl": "/images/hero4.png",
-      "imageHint": "outreach slide"
+      "imageUrl": "https://picsum.photos/seed/mission1/1200/800",
+      "imageHint": "helping others"
     },
     {
       "id": "hero-church",
       "description": "About Us Hero Image",
-      "imageUrl": "/images/about-hero.png",
+      "imageUrl": "https://picsum.photos/seed/aboutus/1200/600",
       "imageHint": "church building"
     },
     {
       "id": "sermon-audio",
       "description": "Sermon Placeholder",
-      "imageUrl": "/images/sermon-placeholder.png",
-      "imageHint": "pulpit bible"
+      "imageUrl": "https://picsum.photos/seed/sermon/600/400",
+      "imageHint": "bible pulpit"
     },
     {
       "id": "community-gathering",
       "description": "Community Event Placeholder",
-      "imageUrl": "/images/community.png",
-      "imageHint": "people gathering"
+      "imageUrl": "https://picsum.photos/seed/gathering/600/400",
+      "imageHint": "community meal"
     },
     {
       "id": "nature-meditation",
       "description": "Meditation Placeholder",
-      "imageUrl": "/images/meditation.png",
-      "imageHint": "nature light"
+      "imageUrl": "https://picsum.photos/seed/nature/600/400",
+      "imageHint": "sunlight forest"
     },
     {
       "id": "blog-writing",
       "description": "Blog Placeholder",
-      "imageUrl": "/images/blog-placeholder.png",
-      "imageHint": "writing bible"
+      "imageUrl": "https://picsum.photos/seed/writing/600/400",
+      "imageHint": "journaling bible"
     }
   ]
 }

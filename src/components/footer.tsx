@@ -1,4 +1,6 @@
 
+"use client";
+
 import Link from "next/link";
 import { Mail, Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
 import Image from "next/image";
@@ -10,7 +12,7 @@ export function Footer() {
       <div className="container mx-auto px-4 md:px-8">
         {/* Strictly follow 2 items mobile / 3 items desktop grid */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-          {/* Logo & Info Section */}
+          {/* Logo & Info Section - Spans 2 cols on mobile */}
           <div className="col-span-2 lg:col-span-1 flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative h-12 w-12 overflow-hidden rounded-full border border-primary/10 bg-white">
@@ -25,7 +27,7 @@ export function Footer() {
                 Nayoth Divine Power<br/>Christian Center
               </span>
             </Link>
-            <p className="text-[10px] text-muted-foreground leading-relaxed max-sm:col-span-2">
+            <p className="text-[10px] text-muted-foreground leading-relaxed">
               "Ngome ya Bwana kwa Makimbilio ya Watu Wake". Tumeitwa kuliandaa kanisa kwa unyakuo na kuinua jeshi tangu mwaka 1992.
             </p>
             <div className="flex gap-4 mt-2">
@@ -43,7 +45,7 @@ export function Footer() {
 
           {/* Links Section */}
           <div className="col-span-1 space-y-4">
-            <h3 className="font-headline font-bold text-sm mb-4 border-l-2 border-primary pl-2">Kurasa</h3>
+            <h3 className="font-headline font-bold text-sm mb-4 border-l-2 border-primary pl-2 uppercase tracking-widest text-[10px]">Kurasa</h3>
             <div className="flex flex-col gap-2">
               <Link href="/" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Mwanzo</Link>
               <Link href="/about" className="text-[10px] text-muted-foreground hover:text-primary font-medium">Kuhusu Sisi</Link>
@@ -55,7 +57,7 @@ export function Footer() {
 
           {/* Contact Section */}
           <div className="col-span-1 space-y-4">
-            <h3 className="font-headline font-bold text-sm mb-4 border-l-2 border-primary pl-2">Wasiliana</h3>
+            <h3 className="font-headline font-bold text-sm mb-4 border-l-2 border-primary pl-2 uppercase tracking-widest text-[10px]">Wasiliana</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-[10px] text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary shrink-0" />

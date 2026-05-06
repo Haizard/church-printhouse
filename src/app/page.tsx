@@ -49,13 +49,14 @@ export default function Home() {
               {heroSlides.map((slide, index) => {
                 const img = PlaceHolderImages.find(i => i.id === slide.image);
                 return (
-                  <CarouselItem key={index} className="relative h-[60vh] md:h-[80vh]">
+                  <CarouselItem key={index} className="relative h-full basis-full">
                     <Image
                       src={img?.imageUrl || `https://picsum.photos/seed/${index}/1200/800`}
                       alt={slide.title}
                       fill
                       className="object-cover brightness-[0.5]"
                       priority
+                      data-ai-hint={img?.imageHint}
                     />
                     <div className="absolute inset-0 flex items-center justify-center text-center text-white px-4">
                       <div className="max-w-4xl space-y-4">
@@ -74,7 +75,7 @@ export default function Home() {
           </Carousel>
         </section>
 
-        {/* Sliders strictly 2 on mobile, 3 on desktop */}
+        {/* content Sliders: 2 on mobile, 3 on desktop */}
         <section className="py-20 bg-slate-50">
           <div className="container mx-auto px-4 md:px-8">
             <div className="flex justify-between items-end mb-10">
@@ -82,7 +83,7 @@ export default function Home() {
                 <h3 className="text-primary font-bold tracking-widest text-xs uppercase mb-2">Neno la Bwana</h3>
                 <h2 className="text-3xl md:text-4xl font-headline font-bold">Mahubiri ya Karibuni</h2>
               </div>
-              <Button variant="link" asChild className="hidden md:flex gap-2">
+              <Button variant="link" asChild className="hidden md:flex gap-2 text-accent font-bold">
                 <Link href="/sermons">Ona Yote <ArrowRight className="h-4 w-4" /></Link>
               </Button>
             </div>
@@ -93,10 +94,16 @@ export default function Home() {
                   <CarouselItem key={sermon.id} className="pl-2 md:pl-4 basis-1/2 lg:basis-1/3">
                     <Card className="h-full border-none shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col bg-white">
                       <div className="relative aspect-video">
-                        <Image src={sermon.imageUrl || "/images/sermon-placeholder.png"} alt={sermon.title} fill className="object-cover" />
+                        <Image 
+                          src={sermon.imageUrl || "https://picsum.photos/seed/sermon/600/400"} 
+                          alt={sermon.title} 
+                          fill 
+                          className="object-cover" 
+                          data-ai-hint="bible pulpit"
+                        />
                       </div>
                       <CardHeader className="p-4">
-                        <CardTitle className="text-sm md:text-lg line-clamp-1 font-headline">{sermon.title}</CardTitle>
+                        <CardTitle className="text-xs md:text-base line-clamp-1 font-headline">{sermon.title}</CardTitle>
                       </CardHeader>
                       <CardFooter className="mt-auto p-4 pt-0">
                         <Button variant="link" size="sm" asChild className="p-0 text-primary font-bold text-[10px]">
@@ -111,11 +118,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Vision Section following the 2-mobile/3-desktop rule */}
+        {/* Vision Section: 2 on mobile, 3 on desktop */}
         <section className="py-24 bg-white">
-          <div className="container mx-auto px-4 md:px-8 text-center max-w-5xl">
-            <h2 className="text-4xl font-headline font-bold mb-12">Huduma na Maono Yetu</h2>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-12">
+          <div className="container mx-auto px-4 md:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-headline font-bold mb-12">Huduma na Maono Yetu</h2>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="space-y-4">
                 <div className="p-4 bg-primary/10 rounded-2xl w-fit mx-auto"><Shield className="h-8 w-8 text-primary" /></div>
                 <h3 className="font-headline font-bold text-lg">Kuliandaa Kanisa</h3>
@@ -126,7 +133,7 @@ export default function Home() {
                 <h3 className="font-headline font-bold text-lg">Kuinua Jeshi</h3>
                 <p className="text-[10px] md:text-xs text-muted-foreground">Kujenga jeshi la kiroho kwa ajili ya uamsho.</p>
               </div>
-              <div className="space-y-4 max-lg:col-span-2 max-lg:mx-auto">
+              <div className="space-y-4 max-lg:col-span-2">
                 <div className="p-4 bg-primary/10 rounded-2xl w-fit mx-auto"><Globe className="h-8 w-8 text-primary" /></div>
                 <h3 className="font-headline font-bold text-lg">Uinjilisti</h3>
                 <p className="text-[10px] md:text-xs text-muted-foreground">Kufikisha injili ya ufalme kwa mataifa yote.</p>
