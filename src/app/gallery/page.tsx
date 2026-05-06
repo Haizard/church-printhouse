@@ -1,34 +1,32 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Maximize2, Camera, X } from "lucide-react";
-
-const GALLERY_ITEMS = [
-  { id: 1, imageId: "gallery-worship-1", category: "Worship", title: "Sunday Morning Praise" },
-  { id: 2, imageId: "gallery-community-1", category: "Community", title: "Tuesday Small Group" },
-  { id: 3, imageId: "gallery-outreach-1", category: "Outreach", title: "Community Garden Project" },
-  { id: 4, imageId: "gallery-nature-1", category: "Nature", title: "Forest Trail Sanctuary" },
-  { id: 5, imageId: "gallery-worship-2", category: "Worship", title: "Candlelight Christmas Eve" },
-  { id: 6, imageId: "gallery-community-2", category: "Community", title: "Youth Outdoor Games" },
-  { id: 7, imageId: "hero-church", category: "Sanctuary", title: "Our Forest Home" },
-  { id: 8, imageId: "nature-meditation", category: "Nature", title: "Morning Light" },
-];
+import { Maximize2, Camera, Loader2 } from "lucide-react";
+import { useFirestore, useCollection } from "@/firebase";
+import { collection, query } from "firebase/firestore";
 
 const CATEGORIES = ["All", "Worship", "Community", "Outreach", "Nature", "Sanctuary"];
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const db = useFirestore();
 
-  const filteredItems = GALLERY_ITEMS.filter(
+  const galleryQuery = useMemo(() => {
+    if (!db) return null;
+    return query(collection(db, "gallery"));
+  }, [db]);
+
+  const { data: items, loading } = useCollection(galleryQuery);
+
+  const filteredItems = items?.filter(
     (item) => activeCategory === "All" || item.category === activeCategory
   );
 
@@ -47,7 +45,6 @@ export default function GalleryPage() {
           </p>
         </header>
 
-        {/* Category Filters */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
           {CATEGORIES.map((cat) => (
             <Button
@@ -61,23 +58,24 @@ export default function GalleryPage() {
           ))}
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredItems.map((item) => {
-            const placeholder = PlaceHolderImages.find((img) => img.id === item.imageId);
-            if (!placeholder) return null;
-
-            return (
+        {loading ? (
+          <div className="flex justify-center py-24">
+            <Loader2 className="h-12 w-12 text-primary animate-spin" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredItems?.map((item) => (
               <Dialog key={item.id}>
                 <DialogTrigger asChild>
                   <Card className="group relative aspect-[4/5] overflow-hidden border-none cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500">
-                    <Image
-                      src={placeholder.imageUrl}
-                      alt={item.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
-                      data-ai-hint={placeholder.imageHint}
-                    />
+                    {item.imageUrl && (
+                      <Image
+                        src={item.imageUrl}
+                        alt={item.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
                       <Badge className="w-fit mb-2 bg-white/20 backdrop-blur-md border-white/30 text-white">
                         {item.category}
@@ -89,27 +87,29 @@ export default function GalleryPage() {
                 </DialogTrigger>
                 <DialogContent className="max-w-[90vw] md:max-w-[70vw] p-0 overflow-hidden bg-black border-none">
                   <div className="relative aspect-[16/9] w-full">
-                    <Image
-                      src={placeholder.imageUrl}
-                      alt={item.title}
-                      fill
-                      className="object-contain"
-                    />
+                    {item.imageUrl && (
+                      <Image
+                        src={item.imageUrl}
+                        alt={item.title}
+                        fill
+                        className="object-contain"
+                      />
+                    )}
                   </div>
                   <div className="p-6 bg-white dark:bg-slate-900">
                     <div className="flex items-center justify-between mb-2">
                       <h2 className="text-2xl font-headline font-bold text-primary">{item.title}</h2>
                       <Badge variant="secondary">{item.category}</Badge>
                     </div>
-                    <p className="text-muted-foreground">{placeholder.description}</p>
+                    <p className="text-muted-foreground">{item.description}</p>
                   </div>
                 </DialogContent>
               </Dialog>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        )}
 
-        {filteredItems.length === 0 && (
+        {!loading && filteredItems?.length === 0 && (
           <div className="py-24 text-center">
             <h3 className="text-xl font-medium text-muted-foreground">No images found in this category.</h3>
             <Button variant="link" onClick={() => setActiveCategory("All")} className="mt-2 text-primary">

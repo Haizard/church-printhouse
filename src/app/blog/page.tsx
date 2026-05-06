@@ -1,59 +1,31 @@
+
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search, User, Calendar, ArrowRight } from "lucide-react";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-
-const MOCK_BLOG_POSTS = [
-  {
-    id: 1,
-    title: "Finding Peace in the Evergreen",
-    author: "Pastor Elena Thorne",
-    date: "2024-05-10",
-    category: "Reflection",
-    image: "nature-meditation",
-    summary: "How spending time in creation can deepen our spiritual walk and quiet the noise of modern life."
-  },
-  {
-    id: 2,
-    title: "The Power of Radical Hospitality",
-    author: "David Park",
-    date: "2024-05-03",
-    category: "Community",
-    image: "community-gathering",
-    summary: "Exploring the biblical call to welcome the stranger and build a truly inclusive church family."
-  },
-  {
-    id: 3,
-    title: "Studying the Word Together",
-    author: "Sarah Jenkins",
-    date: "2024-04-26",
-    category: "Study",
-    image: "blog-writing",
-    summary: "Tips for personal devotions and why community study is vital for Christian maturity."
-  },
-  {
-    id: 4,
-    title: "Service: The Hands of Christ",
-    author: "Ministry Team",
-    date: "2024-04-19",
-    category: "Outreach",
-    image: "hero-church",
-    summary: "Reflecting on our recent neighborhood cleanup and what it means to be a servant-hearted community."
-  }
-];
+import { Search, User, Calendar, ArrowRight, Loader2 } from "lucide-react";
+import { useFirestore, useCollection } from "@/firebase";
+import { collection, query, orderBy } from "firebase/firestore";
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const db = useFirestore();
 
-  const filteredPosts = MOCK_BLOG_POSTS.filter(post => 
+  const blogQuery = useMemo(() => {
+    if (!db) return null;
+    return query(collection(db, "blogPosts"), orderBy("date", "desc"));
+  }, [db]);
+
+  const { data: posts, loading } = useCollection(blogQuery);
+
+  const filteredPosts = posts?.filter(post => 
     post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
     post.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
     post.category.toLowerCase().includes(searchQuery.toLowerCase())
@@ -83,16 +55,19 @@ export default function BlogPage() {
           </div>
         </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {filteredPosts.map((post, idx) => {
-            const placeholder = PlaceHolderImages.find(img => img.id === post.image);
-            return (
+        {loading ? (
+          <div className="flex justify-center py-24">
+            <Loader2 className="h-12 w-12 text-primary animate-spin" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {filteredPosts?.map((post, idx) => (
               <Card key={post.id} className={`overflow-hidden border-none shadow-sm hover:shadow-md transition-all group bg-white ${idx === 0 && !searchQuery ? 'md:col-span-2' : ''}`}>
                 <div className={`flex flex-col ${idx === 0 && !searchQuery ? 'md:flex-row' : ''}`}>
                   <div className={`relative aspect-[16/9] ${idx === 0 && !searchQuery ? 'md:w-1/2 md:aspect-auto' : 'w-full'}`}>
-                    {placeholder?.imageUrl && (
+                    {post.imageUrl && (
                       <Image 
-                        src={placeholder.imageUrl}
+                        src={post.imageUrl}
                         alt={post.title}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -106,7 +81,7 @@ export default function BlogPage() {
                       </Badge>
                       <div className="flex items-center text-xs text-muted-foreground gap-1">
                         <Calendar className="h-3 w-3" />
-                        {new Date(post.date).toLocaleDateString()}
+                        {post.date}
                       </div>
                     </div>
                     <CardTitle className={`font-headline group-hover:text-primary transition-colors mb-4 ${idx === 0 && !searchQuery ? 'text-3xl md:text-4xl' : 'text-2xl'}`}>
@@ -122,18 +97,20 @@ export default function BlogPage() {
                         </div>
                         {post.author}
                       </div>
-                      <Button variant="link" className="p-0 text-accent font-bold hover:text-primary flex items-center gap-2">
-                        Read Story <ArrowRight className="h-4 w-4" />
+                      <Button variant="link" asChild className="p-0 text-accent font-bold hover:text-primary flex items-center gap-2">
+                        <Link href={`/blog/${post.id}`}>
+                          Read Story <ArrowRight className="h-4 w-4" />
+                        </Link>
                       </Button>
                     </div>
                   </div>
                 </div>
               </Card>
-            )
-          })}
-        </div>
+            ))}
+          </div>
+        )}
 
-        {filteredPosts.length === 0 && (
+        {!loading && filteredPosts?.length === 0 && (
           <div className="py-24 text-center">
             <h3 className="text-xl font-medium text-muted-foreground">No stories found.</h3>
             <Button variant="link" onClick={() => setSearchQuery("")} className="mt-2 text-primary">View all stories</Button>

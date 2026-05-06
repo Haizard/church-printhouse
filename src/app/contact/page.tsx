@@ -11,24 +11,50 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Send, Phone, Mail, MapPin, Clock } from "lucide-react";
+import { useFirestore } from "@/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { errorEmitter } from "@/firebase/error-emitter";
+import { FirestorePermissionError } from "@/firebase/errors";
 
 export default function ContactPage() {
   const { toast } = useToast();
+  const db = useFirestore();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!db) return;
+
     setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    toast({
-      title: "Message Sent",
-      description: "Thank you for reaching out. We'll get back to you shortly.",
-    });
-    (e.target as HTMLFormElement).reset();
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      firstName: formData.get("firstName") as string,
+      lastName: formData.get("lastName") as string,
+      email: formData.get("email") as string,
+      subject: formData.get("subject") as string,
+      message: formData.get("message") as string,
+      createdAt: serverTimestamp(),
+    };
+
+    addDoc(collection(db, "messages"), data)
+      .then(() => {
+        toast({
+          title: "Message Sent",
+          description: "Thank you for reaching out. We'll get back to you shortly.",
+        });
+        (e.target as HTMLFormElement).reset();
+      })
+      .catch(async (error) => {
+        const permissionError = new FirestorePermissionError({
+          path: "messages",
+          operation: "create",
+          requestResourceData: data,
+        });
+        errorEmitter.emit("permission-error", permissionError);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   }
 
   return (
@@ -114,25 +140,25 @@ export default function ContactPage() {
                     <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                          <Label htmlFor="first-name">First Name</Label>
-                          <Input id="first-name" placeholder="John" required className="rounded-xl" />
+                          <Label htmlFor="firstName">First Name</Label>
+                          <Input id="firstName" name="firstName" placeholder="John" required className="rounded-xl" />
                         </div>
                         <div className="space-y-2">
-                          <Label htmlFor="last-name">Last Name</Label>
-                          <Input id="last-name" placeholder="Doe" required className="rounded-xl" />
+                          <Label htmlFor="lastName">Last Name</Label>
+                          <Input id="lastName" name="lastName" placeholder="Doe" required className="rounded-xl" />
                         </div>
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email">Email Address</Label>
-                        <Input id="email" type="email" placeholder="john@example.com" required className="rounded-xl" />
+                        <Input id="email" name="email" type="email" placeholder="john@example.com" required className="rounded-xl" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="subject">Subject</Label>
-                        <Input id="subject" placeholder="How can we help?" required className="rounded-xl" />
+                        <Input id="subject" name="subject" placeholder="How can we help?" required className="rounded-xl" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="message">Message</Label>
-                        <Textarea id="message" placeholder="Your message here..." className="min-h-[150px] rounded-xl" required />
+                        <Textarea id="message" name="message" placeholder="Your message here..." className="min-h-[150px] rounded-xl" required />
                       </div>
                       <Button type="submit" className="w-full h-12 rounded-xl text-lg font-bold" disabled={isSubmitting}>
                         {isSubmitting ? "Sending..." : (

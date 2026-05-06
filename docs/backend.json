@@ -1,3 +1,4 @@
+
 {
   "entities": {
     "Sermon": {
@@ -24,7 +25,8 @@
         "date": { "type": "string" },
         "time": { "type": "string" },
         "description": { "type": "string" },
-        "location": { "type": "string" }
+        "location": { "type": "string" },
+        "category": { "type": "string" }
       },
       "required": ["title", "date", "time"]
     },
@@ -37,9 +39,37 @@
         "author": { "type": "string" },
         "date": { "type": "string", "format": "date" },
         "content": { "type": "string" },
-        "imageUrl": { "type": "string" }
+        "imageUrl": { "type": "string" },
+        "category": { "type": "string" },
+        "summary": { "type": "string" }
       },
       "required": ["title", "author", "date", "content"]
+    },
+    "GalleryItem": {
+      "title": "Gallery Item",
+      "description": "An image showcasing church life.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "category": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "required": ["title", "imageUrl", "category"]
+    },
+    "ContactMessage": {
+      "title": "Contact Message",
+      "description": "A message submitted via the contact form.",
+      "type": "object",
+      "properties": {
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "email": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["firstName", "lastName", "email", "message"]
     }
   },
   "auth": {
@@ -57,6 +87,14 @@
     "/blogPosts/{postId}": {
       "schema": { "$ref": "#/entities/BlogPost" },
       "description": "Collection of community blog posts."
+    },
+    "/gallery/{itemId}": {
+      "schema": { "$ref": "#/entities/GalleryItem" },
+      "description": "Collection of gallery images."
+    },
+    "/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/ContactMessage" },
+      "description": "Collection of contact form submissions."
     }
   }
 }

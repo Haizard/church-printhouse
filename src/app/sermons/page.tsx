@@ -1,62 +1,34 @@
+
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search, Play, Calendar, User } from "lucide-react";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-
-const MOCK_SERMONS = [
-  {
-    id: 1,
-    title: "The Roots of Resilience",
-    speaker: "Pastor Elena Thorne",
-    date: "2024-05-05",
-    topic: "Faith",
-    image: "sermon-audio",
-    description: "Finding strength in ancient wisdom during modern trials."
-  },
-  {
-    id: 2,
-    title: "Cultivating Community",
-    speaker: "Min. David Park",
-    date: "2024-04-28",
-    topic: "Community",
-    image: "community-gathering",
-    description: "How to build lasting bonds within a church family."
-  },
-  {
-    id: 3,
-    title: "Quiet in the Chaos",
-    speaker: "Pastor Elena Thorne",
-    date: "2024-04-21",
-    topic: "Peace",
-    image: "nature-meditation",
-    description: "A study of Jesus' time in the wilderness."
-  },
-  {
-    id: 4,
-    title: "Walking by Faith",
-    speaker: "Sarah Jenkins",
-    date: "2024-04-14",
-    topic: "Faith",
-    image: "hero-church",
-    description: "Trusting the unknown paths before us."
-  }
-];
+import { Search, Play, Calendar, User, Loader2 } from "lucide-react";
+import { useFirestore, useCollection } from "@/firebase";
+import { collection, query, orderBy } from "firebase/firestore";
 
 export default function SermonsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
+  const db = useFirestore();
+
+  const sermonsQuery = useMemo(() => {
+    if (!db) return null;
+    return query(collection(db, "sermons"), orderBy("date", "desc"));
+  }, [db]);
+
+  const { data: sermons, loading } = useCollection(sermonsQuery);
 
   const topics = ["All", "Faith", "Community", "Peace", "Hope"];
 
-  const filteredSermons = MOCK_SERMONS.filter(sermon => {
+  const filteredSermons = sermons?.filter(sermon => {
     const matchesSearch = sermon.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           sermon.speaker.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesTopic = activeFilter === "All" || sermon.topic === activeFilter;
@@ -99,15 +71,18 @@ export default function SermonsPage() {
           </div>
         </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredSermons.map(sermon => {
-            const placeholder = PlaceHolderImages.find(img => img.id === sermon.image);
-            return (
+        {loading ? (
+          <div className="flex justify-center py-24">
+            <Loader2 className="h-12 w-12 text-primary animate-spin" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredSermons?.map(sermon => (
               <Card key={sermon.id} className="overflow-hidden border-none shadow-sm hover:shadow-md transition-all group bg-white">
                 <div className="relative aspect-video">
-                  {placeholder?.imageUrl ? (
+                  {sermon.imageUrl ? (
                     <Image 
-                      src={placeholder.imageUrl}
+                      src={sermon.imageUrl}
                       alt={sermon.title}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -128,7 +103,7 @@ export default function SermonsPage() {
                     <Badge variant="secondary" className="bg-primary/10 text-primary hover:bg-primary/20">{sermon.topic}</Badge>
                     <div className="flex items-center text-xs text-muted-foreground gap-1">
                       <Calendar className="h-3 w-3" />
-                      {new Date(sermon.date).toLocaleDateString()}
+                      {sermon.date}
                     </div>
                   </div>
                   <CardTitle className="font-headline text-2xl group-hover:text-primary transition-colors">{sermon.title}</CardTitle>
@@ -141,14 +116,16 @@ export default function SermonsPage() {
                   <p className="text-sm text-muted-foreground line-clamp-2">{sermon.description}</p>
                 </CardContent>
                 <CardFooter className="pt-0">
-                  <Button variant="link" className="p-0 text-accent hover:text-primary">Watch Now</Button>
+                  <Button variant="link" className="p-0 text-accent hover:text-primary" asChild>
+                    <Link href={`/sermons/${sermon.id}`}>Watch Now</Link>
+                  </Button>
                 </CardFooter>
               </Card>
-            )
-          })}
-        </div>
+            ))}
+          </div>
+        )}
 
-        {filteredSermons.length === 0 && (
+        {!loading && filteredSermons?.length === 0 && (
           <div className="py-24 text-center">
             <h3 className="text-xl font-medium text-muted-foreground">No sermons found matching your criteria.</h3>
             <Button variant="link" onClick={() => { setSearchQuery(""); setActiveFilter("All"); }} className="mt-2">Clear all filters</Button>
