@@ -30,22 +30,31 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="space-y-4">
-            <h3 className="font-headline font-bold text-base mb-4">Viungo</h3>
-            <ul className="space-y-3">
-              <li><Link href="/sermons" className="text-xs text-muted-foreground hover:text-primary">Neno la Huduma</Link></li>
-              <li><Link href="/events" className="text-xs text-muted-foreground hover:text-primary">Matukio</Link></li>
-              <li><Link href="/gallery" className="text-xs text-muted-foreground hover:text-primary">Picha</Link></li>
-              <li><Link href="/blog" className="text-xs text-muted-foreground hover:text-primary">Blogu</Link></li>
-            </ul>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-4">
+              <h3 className="font-headline font-bold text-base mb-4">Viungo</h3>
+              <ul className="space-y-3">
+                <li><Link href="/" className="text-xs text-muted-foreground hover:text-primary">Mwanzo</Link></li>
+                <li><Link href="/about" className="text-xs text-muted-foreground hover:text-primary">Kuhusu Sisi</Link></li>
+                <li><Link href="/sermons" className="text-xs text-muted-foreground hover:text-primary">Neno la Huduma</Link></li>
+                <li><Link href="/events" className="text-xs text-muted-foreground hover:text-primary">Matukio</Link></li>
+              </ul>
+            </div>
+            <div className="space-y-4 pt-10">
+              <ul className="space-y-3">
+                <li><Link href="/gallery" className="text-xs text-muted-foreground hover:text-primary">Picha</Link></li>
+                <li><Link href="/blog" className="text-xs text-muted-foreground hover:text-primary">Blogu</Link></li>
+                <li><Link href="/contact" className="text-xs text-muted-foreground hover:text-primary">Mawasiliano</Link></li>
+              </ul>
+            </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="col-span-2 lg:col-span-1 space-y-4">
             <h3 className="font-headline font-bold text-base mb-4">Wasiliana</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-xs text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary shrink-0" />
-                <span>Ramah Sanctuary, TZ</span>
+                <span>Ramah Sanctuary, Tanzania</span>
               </li>
               <li className="flex items-center gap-2 text-xs text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary shrink-0" />
@@ -62,8 +71,8 @@ export function Footer() {
         <div className="mt-16 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-muted-foreground">
           <p>© {new Date().getFullYear()} Nayoth Divine Power Christian Center.</p>
           <div className="flex gap-4">
+            <Link href="/login" className="hover:text-primary">Staff Login</Link>
             <Link href="#" className="hover:text-primary">Privacy</Link>
-            <Link href="#" className="hover:text-primary">Terms</Link>
           </div>
         </div>
       </div>

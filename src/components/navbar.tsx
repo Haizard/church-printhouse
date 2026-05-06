@@ -14,6 +14,7 @@ import { signOut } from "firebase/auth";
 
 const navItems = [
   { name: "Mwanzo", href: "/" },
+  { name: "Kuhusu", href: "/about" },
   { name: "Neno", href: "/sermons" },
   { name: "Matukio", href: "/events" },
   { name: "Picha", href: "/gallery" },
