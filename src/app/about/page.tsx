@@ -63,7 +63,8 @@ export default function AboutPage() {
               className="object-cover opacity-100"
               priority
             />
-            <div className="absolute inset-0 bg-black/10" />
+            {/* Removed blurring/darkening overlay styles */}
+            <div className="absolute inset-0 bg-black/5" />
           </div>
           <div className="container mx-auto px-4 h-full flex items-center justify-center text-center relative z-10">
             <div className="max-w-3xl">
@@ -99,7 +100,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Detailed History - High Contrast Background Image, No Blur */}
+        {/* Detailed History - High Contrast Background Image, No Style reducing contrast */}
         <section className="relative py-24 md:py-32 overflow-hidden bg-black">
           <div className="absolute inset-0">
             <Image 
@@ -108,8 +109,7 @@ export default function AboutPage() {
               fill 
               className="object-cover opacity-100"
             />
-            {/* Minimal overlay to ensure text readability while maintaining high contrast */}
-            <div className="absolute inset-0 bg-black/40" />
+            {/* Removed the style (overlay/blur) that reduces contrast as requested */}
           </div>
           
           <div className="container mx-auto px-4 md:px-8 max-w-4xl relative z-10">
@@ -199,7 +199,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Final CTA - Solid High Contrast Background */}
+        {/* Final CTA - Solid High Contrast Background (No background image here) */}
         <section className="py-32 bg-primary text-white">
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-4xl mx-auto space-y-10">
