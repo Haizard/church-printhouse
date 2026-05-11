@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -105,28 +104,29 @@ export default function Home() {
 
       <main className="flex-grow">
         {/* 1. Hero Slider */}
-        <section className="hero-section relative h-[85vh] min-h-[600px] overflow-hidden bg-black">
+        <section className="relative h-[85vh] min-h-[600px] overflow-hidden bg-black">
           <Carousel plugins={[Autoplay({ delay: 6000 })]} className="h-full w-full" opts={{ loop: true }}>
             <CarouselContent className="h-full">
               {heroSlides.map((slide, index) => (
                 <CarouselItem key={index} className="relative h-full basis-full">
                   <Image src={slide.image} alt={slide.title} fill priority className="object-cover" />
-                  <div className="hero-shell absolute inset-0 px-4 md:px-8 pointer-events-none">
+                  <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+                  <div className="absolute inset-0 px-4 md:px-8 pointer-events-none">
                     <div className="container mx-auto flex h-full items-center">
-                      <div className="hero-copy max-w-4xl pointer-events-auto">
-                        <h1 className="hero-title text-shadow-lg">{slide.title}</h1>
-                        <div className="hero-stats-grid mt-12 grid grid-cols-2 md:grid-cols-3 gap-4">
-                          <div className="hero-stat-card">
-                            <p className="hero-stat-label">Utume</p>
-                            <p className="hero-stat-value">Kuliandaa Kanisa</p>
+                      <div className="max-w-4xl pointer-events-auto">
+                        <h1 className="text-5xl md:text-8xl font-headline font-bold leading-[0.96] tracking-tight text-white drop-shadow-2xl">{slide.title}</h1>
+                        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl">
+                          <div className="rounded-3xl border border-white/20 bg-white/10 px-6 py-6 text-white backdrop-blur-md">
+                            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/80">Utume</p>
+                            <p className="mt-2 text-lg font-bold leading-tight">Kuliandaa Kanisa</p>
                           </div>
-                          <div className="hero-stat-card">
-                            <p className="hero-stat-label">Jeshi</p>
-                            <p className="hero-stat-value">Kuinua Watumishi</p>
+                          <div className="rounded-3xl border border-white/20 bg-white/10 px-6 py-6 text-white backdrop-blur-md">
+                            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/80">Jeshi</p>
+                            <p className="mt-2 text-lg font-bold leading-tight">Kuinua Watumishi</p>
                           </div>
-                          <div className="hero-stat-card hidden md:block">
-                            <p className="hero-stat-label">Injili</p>
-                            <p className="hero-stat-value">Kufikia Mataifa</p>
+                          <div className="rounded-3xl border border-white/20 bg-white/10 px-6 py-6 text-white backdrop-blur-md hidden md:block">
+                            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/80">Injili</p>
+                            <p className="mt-2 text-lg font-bold leading-tight">Kufikia Mataifa</p>
                           </div>
                         </div>
                       </div>
@@ -139,10 +139,10 @@ export default function Home() {
         </section>
 
         {/* 2. Mission Band */}
-        <section className="mission-band-shell -mt-16 relative z-20 px-4 md:px-8">
+        <section className="relative z-20 -mt-20 px-4 md:px-8">
           <div className="container mx-auto">
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-              <Card className="mission-band-card">
+              <Card className="rounded-[2rem] border border-white/70 bg-[#fbfaf7]/90 shadow-xl shadow-primary/5 backdrop-blur-md">
                 <CardContent className="p-8 space-y-4">
                   <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary">
                     <Shield className="h-4 w-4" /> Kuliandaa Kanisa
@@ -150,7 +150,7 @@ export default function Home() {
                   <p className="text-sm text-muted-foreground leading-relaxed">Tunalijenga kanisa kuwa tayari kwa unyakuo kupitia mafundisho ya utakatifu na maandalizi ya kiroho.</p>
                 </CardContent>
               </Card>
-              <Card className="mission-band-card">
+              <Card className="rounded-[2rem] border border-white/70 bg-[#fbfaf7]/90 shadow-xl shadow-primary/5 backdrop-blur-md">
                 <CardContent className="p-8 space-y-4">
                   <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary">
                     <Swords className="h-4 w-4" /> Kuinua Jeshi
@@ -158,7 +158,7 @@ export default function Home() {
                   <p className="text-sm text-muted-foreground leading-relaxed">Tunainua watumishi na waamini kupitia uamsho wa kweli wa Roho Mtakatifu duniani kote.</p>
                 </CardContent>
               </Card>
-              <Card className="mission-band-card hidden lg:block">
+              <Card className="rounded-[2rem] border border-white/70 bg-[#fbfaf7]/90 shadow-xl shadow-primary/5 backdrop-blur-md hidden lg:block">
                 <CardContent className="p-8 space-y-4">
                   <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary">
                     <Globe className="h-4 w-4" /> Uinjilisti
@@ -171,16 +171,16 @@ export default function Home() {
         </section>
 
         {/* 3. Identity Section */}
-        <section className="section-shell identity-shell px-4 md:px-8 bg-[#fdfbf7]">
+        <section className="py-24 px-4 md:px-8 bg-[#fdfbf7]">
           <div className="container mx-auto">
             <div className="relative min-h-[500px] overflow-hidden rounded-[3rem] shadow-2xl bg-black">
               <Image src={IdentityImage} alt="Identity" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-black/40" />
               <div className="relative z-10 flex h-full flex-col justify-center p-8 md:p-16 text-white max-w-2xl">
                 <p className="section-header-kicker text-white/80">Maono ya Nayoth</p>
                 <h2 className="text-4xl md:text-6xl font-headline font-bold leading-tight">Ngome ya Bwana kwa Makimbilio ya Watu Wake.</h2>
-                <p className="text-lg opacity-80 mt-6 leading-relaxed">Tangu 1992, N.D.P.C.C. imekuwa kituo cha uamsho na maandalizi ya kiroho kwa ajili ya unyakuo wa watakatifu.</p>
-                <Button asChild size="lg" className="rounded-full bg-white text-primary hover:bg-slate-100 w-fit mt-10 h-14 px-10 font-bold">
+                <p className="text-lg opacity-90 mt-6 leading-relaxed">Tangu 1992, N.D.P.C.C. imekuwa kituo cha uamsho na maandalizi ya kiroho kwa ajili ya unyakuo wa watakatifu.</p>
+                <Button asChild size="lg" className="rounded-full bg-white text-primary hover:bg-slate-100 w-fit mt-10 h-14 px-10 font-bold shadow-xl">
                   <Link href="/about">Historia Yetu</Link>
                 </Button>
               </div>
@@ -188,15 +188,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 4. Featured Events Slider */}
-        <section className="section-shell events-shell bg-white">
+        {/* 4. Featured Events */}
+        <section className="py-24 bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Ushirika Wetu" title="Matukio Yajayo" actionHref="/events" actionText="Ona Yote" />
             <Carousel className="w-full">
               <CarouselContent className="-ml-4" opts={{ align: "start" }}>
                 {sampleEvents.map((event) => (
-                  <CarouselItem key={event.id} className="basis-1/2 lg:basis-1/3 pl-4">
-                    <Card className="event-editorial-card h-full rounded-[2.5rem] border border-primary/5 bg-slate-50/50 hover:shadow-xl transition-all">
+                  <CarouselItem key={event.id} className="basis-full md:basis-1/2 lg:basis-1/3 pl-4">
+                    <Card className="h-full rounded-[2.5rem] border border-primary/5 bg-slate-50/50 hover:shadow-xl transition-all">
                       <CardContent className="p-8 space-y-6">
                         <Badge className="bg-primary/10 text-primary border-none rounded-full px-4 py-1">{event.date}</Badge>
                         <h3 className="text-2xl font-headline font-bold text-primary line-clamp-1">{event.title}</h3>
@@ -215,27 +215,25 @@ export default function Home() {
         </section>
 
         {/* 5. Worship / Scripture Highlight */}
-        <section className="section-shell bg-primary text-white min-h-[300px] flex items-center">
-          <div className="container mx-auto px-4 text-center">
-            <div className="max-w-4xl mx-auto space-y-8">
-              <Cross className="h-14 w-14 text-accent mx-auto mb-4" />
-              <h2 className="text-3xl md:text-5xl font-headline font-bold leading-tight">
-                "Siionei haya Injili kwa maana ni uweza wa Mungu uletao wokovu kwa kila aaminiye."
-              </h2>
-              <p className="text-2xl font-bold text-accent tracking-widest uppercase mt-4">WARUMI 1:16</p>
-            </div>
+        <section className="py-24 bg-primary text-white text-center">
+          <div className="container mx-auto px-4 max-w-4xl space-y-8">
+            <Cross className="h-14 w-14 text-accent mx-auto mb-4" />
+            <h2 className="text-3xl md:text-5xl font-headline font-bold leading-tight">
+              "Siionei haya Injili kwa maana ni uweza wa Mungu uletao wokovu kwa kila aaminiye."
+            </h2>
+            <p className="text-2xl font-bold text-accent tracking-widest uppercase mt-4">WARUMI 1:16</p>
           </div>
         </section>
 
-        {/* 6. Recent Sermons Slider */}
-        <section className="section-shell sermons-shell bg-slate-50">
+        {/* 6. Recent Sermons */}
+        <section className="py-24 bg-slate-50">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Neno la Bwana" title="Mahubiri Mapya" actionHref="/sermons" actionText="Ona Yote" />
             <Carousel className="w-full">
               <CarouselContent className="-ml-4" opts={{ align: "start" }}>
                 {sampleSermons.map((sermon) => (
-                  <CarouselItem key={sermon.id} className="basis-1/2 lg:basis-1/3 pl-4">
-                    <Card className="sermon-feature-card h-full border-none bg-white shadow-lg overflow-hidden rounded-[2.5rem] group">
+                  <CarouselItem key={sermon.id} className="basis-full md:basis-1/2 lg:basis-1/3 pl-4">
+                    <Card className="h-full border-none bg-white shadow-lg overflow-hidden rounded-[2.5rem] group">
                       <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
                         <Image src={sermon.image} alt={sermon.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                         <div className="absolute bottom-4 left-4"><Badge className="bg-white/90 text-primary border-none text-[10px] font-bold uppercase tracking-wider">{sermon.topic}</Badge></div>
@@ -252,13 +250,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 7. Community Photography Section */}
-        <section className="section-shell px-4 md:px-8 bg-white">
+        {/* 7. Community Photography */}
+        <section className="py-24 px-4 md:px-8 bg-white">
           <div className="container mx-auto">
-            <SectionHeader kicker="Maisha ya Kanisa" title="Picha za Ushirika na Ibada" actionHref="/gallery" actionText="Nyumba ya Picha" />
+            <SectionHeader kicker="Maisha ya Kanisa" title="Picha za Ushirika" actionHref="/gallery" actionText="Nyumba ya Picha" />
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
               {communityGallery.map((item, i) => (
-                <div key={i} className={`relative overflow-hidden rounded-[2.5rem] aspect-square group shadow-lg bg-slate-100 ${i === 2 ? "hidden lg:block" : ""}`}>
+                <div key={i} className="relative overflow-hidden rounded-[2.5rem] aspect-square group shadow-lg bg-slate-100">
                   <Image src={item.image} alt={item.title} fill className="object-cover transition-transform group-hover:scale-110 duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex items-end">
                     <p className="text-white font-headline font-bold text-xl">{item.title}</p>
@@ -269,14 +267,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 8. Blog Section Slider */}
-        <section className="section-shell bg-slate-50">
+        {/* 8. Blog Section */}
+        <section className="py-24 bg-slate-50">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Tafakari Yetu" title="Makala za Blogu" actionHref="/blog" actionText="Soma Yote" />
             <Carousel className="w-full">
               <CarouselContent className="-ml-4" opts={{ align: "start" }}>
                 {sampleBlogs.map((blog) => (
-                  <CarouselItem key={blog.id} className="basis-1/2 lg:basis-1/3 pl-4">
+                  <CarouselItem key={blog.id} className="basis-full md:basis-1/2 lg:basis-1/3 pl-4">
                     <Card className="rounded-[2.5rem] border-none shadow-sm overflow-hidden bg-white flex flex-col h-full hover:shadow-xl transition-all">
                       <div className="relative aspect-video bg-slate-100"><Image src={blog.image} alt={blog.title} fill className="object-cover" /></div>
                       <div className="p-8 flex flex-col flex-grow">
@@ -294,7 +292,7 @@ export default function Home() {
         </section>
 
         {/* 9. Vision & Mission Cards */}
-        <section className="section-shell px-4 md:px-8 bg-white border-t">
+        <section className="py-24 px-4 md:px-8 bg-white border-t">
           <div className="container mx-auto">
             <SectionHeader kicker="Dira na Utume" title="Misingi ya Huduma Yetu" />
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">

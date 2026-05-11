@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -16,7 +15,6 @@ import {
   Shield, 
   Swords, 
   Heart, 
-  GraduationCap, 
   Globe, 
   Users, 
   History, 
@@ -54,7 +52,7 @@ export default function AboutPage() {
       <Navbar />
       
       <main className="flex-grow">
-        {/* Hero Section */}
+        {/* Hero Section - High Contrast */}
         <section className="relative h-[60vh] min-h-[400px] bg-black text-white overflow-hidden">
           <div className="absolute inset-0">
             <Image 
@@ -64,19 +62,19 @@ export default function AboutPage() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-black/20" />
           </div>
           <div className="container mx-auto px-4 h-full flex items-center justify-center text-center relative z-10">
             <div className="max-w-3xl">
               <h1 className="text-5xl md:text-8xl font-headline font-bold mb-6 drop-shadow-2xl">Kuhusu N.D.P.C.C.</h1>
-              <p className="text-xl md:text-3xl opacity-90 font-light leading-relaxed italic drop-shadow-lg">
+              <p className="text-xl md:text-3xl opacity-100 font-bold leading-relaxed italic drop-shadow-lg text-white">
                 "Ngome ya Bwana kwa Makimbilio ya Watu Wake"
               </p>
             </div>
           </div>
         </section>
 
-        {/* Vision Pillars Grid */}
+        {/* Vision Pillars Grid - 2 on mobile, 3 on desktop */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <header className="text-center mb-16">
@@ -87,7 +85,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
               {pillars.map((v, i) => (
                 <Card key={i} className="border-none shadow-sm hover:shadow-xl transition-all bg-slate-50/50 rounded-[2rem]">
-                  <CardContent className="p-8 flex flex-col items-center text-center">
+                  <CardContent className="p-8 flex flex-col items-center text-center h-full">
                     <div className="p-5 bg-white rounded-2xl mb-6 shadow-md">
                       <v.icon className="h-10 w-10 text-primary" />
                     </div>
@@ -100,15 +98,16 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Detailed Content with High Contrast Background Image */}
+        {/* Detailed Content - High Contrast Background */}
         <section className="relative py-24 md:py-32 overflow-hidden bg-black">
           <div className="absolute inset-0">
             <Image 
               src={CommunityImageOne} 
               alt="Church Life" 
               fill 
-              className="object-cover opacity-60"
+              className="object-cover opacity-100"
             />
+            <div className="absolute inset-0 bg-black/30" />
           </div>
           
           <div className="container mx-auto px-4 md:px-8 max-w-4xl relative z-10">
@@ -198,7 +197,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Final CTA */}
+        {/* Final CTA - Clean High Contrast Background */}
         <section className="py-32 bg-primary text-white">
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-4xl mx-auto space-y-10">
