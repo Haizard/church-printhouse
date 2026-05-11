@@ -66,7 +66,7 @@ function SectionHeader({
 
 export default function Home() {
   const heroSlides = [
-    { image: HeroImageOne, title: "Nayoth Divine Power Christian Center" },
+    { image: HeroImageOne, title: "Mamawata" },
     { image: HeroImageTwo, title: "Kuliandaa Kanisa kwa Unyakuo" },
     { image: HeroImageThree, title: "Kuinua Jeshi la Bwana Duniani" },
     { image: HeroImageFour, title: "Injili ya Ufalme kwa Mataifa" },
@@ -175,9 +175,9 @@ export default function Home() {
               <Image src={IdentityImage} alt="Identity" fill className="object-cover opacity-100" />
               <div className="absolute inset-0 bg-black/20" />
               <div className="relative z-10 flex h-full flex-col justify-center p-8 md:p-16 text-white max-w-2xl">
-                <p className="section-header-kicker text-white/80">Maono ya Nayoth</p>
+                <p className="section-header-kicker text-white/80">Maono ya Mamawata</p>
                 <h2 className="text-4xl md:text-6xl font-headline font-bold leading-tight">Ngome ya Bwana kwa Makimbilio ya Watu Wake.</h2>
-                <p className="text-lg opacity-90 mt-6 leading-relaxed">Tangu 1992, N.D.P.C.C. imekuwa kituo cha uamsho na maandalizi ya kiroho kwa ajili ya unyakuo wa watakatifu.</p>
+                <p className="text-lg opacity-90 mt-6 leading-relaxed">Tangu 1992, Mamawata imekuwa kituo cha uamsho na maandalizi ya kiroho kwa ajili ya unyakuo wa watakatifu.</p>
                 <Button asChild size="lg" className="rounded-full bg-white text-primary hover:bg-slate-100 w-fit mt-10 h-14 px-10 font-bold shadow-xl">
                   <Link href="/about">Historia Yetu</Link>
                 </Button>

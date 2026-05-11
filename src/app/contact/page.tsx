@@ -82,7 +82,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-bold">Visit Us</p>
-                        <p className="text-muted-foreground">123 Sanctuary Way, Grove City, OR 97000</p>
+                        <p className="text-muted-foreground">Mwanzo Mpya, Tanzania</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -91,7 +91,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-bold">Call Us</p>
-                        <p className="text-muted-foreground">(555) 123-4567</p>
+                        <p className="text-muted-foreground">+255 Mamawata</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -100,7 +100,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-bold">Email Us</p>
-                        <p className="text-muted-foreground">hello@evergreensanctuary.org</p>
+                        <p className="text-muted-foreground">info@mamawata.or.tz</p>
                       </div>
                     </div>
                   </div>

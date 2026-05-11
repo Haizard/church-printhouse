@@ -58,17 +58,16 @@ export default function AboutPage() {
           <div className="absolute inset-0">
             <Image 
               src={IdentityImage} 
-              alt="About NDPCC" 
+              alt="Kuhusu Mamawata" 
               fill 
               className="object-cover opacity-100"
               priority
             />
-            {/* Removed blurring/darkening overlay styles */}
             <div className="absolute inset-0 bg-black/5" />
           </div>
           <div className="container mx-auto px-4 h-full flex items-center justify-center text-center relative z-10">
             <div className="max-w-3xl">
-              <h1 className="text-5xl md:text-8xl font-headline font-bold mb-6 drop-shadow-2xl">Kuhusu N.D.P.C.C.</h1>
+              <h1 className="text-5xl md:text-8xl font-headline font-bold mb-6 drop-shadow-2xl">Kuhusu Mamawata</h1>
               <p className="text-xl md:text-3xl font-bold italic drop-shadow-lg text-white">
                 "Ngome ya Bwana kwa Makimbilio ya Watu Wake"
               </p>
@@ -100,7 +99,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Detailed History - High Contrast Background Image, No Style reducing contrast */}
+        {/* Detailed History - High Contrast Background Image */}
         <section className="relative py-24 md:py-32 overflow-hidden bg-black">
           <div className="absolute inset-0">
             <Image 
@@ -109,7 +108,6 @@ export default function AboutPage() {
               fill 
               className="object-cover opacity-100"
             />
-            {/* Removed the style (overlay/blur) that reduces contrast as requested */}
           </div>
           
           <div className="container mx-auto px-4 md:px-8 max-w-4xl relative z-10">
@@ -133,7 +131,7 @@ export default function AboutPage() {
                       Mungu alianza kusema na mtumishi wake juu ya utumishi huu mwaka wa 1992. Bwana alionyesha maono ya kazi kubwa nitakayoifanya duniani kuliandaa kanisa lake.
                     </p>
                     <div className="bg-primary/5 p-8 rounded-[2rem] border-l-8 border-primary font-headline italic text-primary text-xl">
-                      "Jina NAYOTH lina maana ya 'Ngome ya Bwana kwa Makimbilio ya Watu Wake'."
+                      "Jina Mamawata lina maana ya 'Ngome ya Bwana kwa Makimbilio ya Watu Wake'."
                     </div>
                   </div>
                 </AccordionContent>
@@ -173,7 +171,7 @@ export default function AboutPage() {
                     </div>
                     <div>
                       <h3 className="text-2xl font-headline font-bold text-primary">Huduma kwa Jamii (Foundation)</h3>
-                      <p className="text-sm text-muted-foreground">Gibea of God Nayoth Foundation</p>
+                      <p className="text-sm text-muted-foreground">Gibea of God Mamawata Foundation</p>
                     </div>
                   </div>
                 </AccordionTrigger>
@@ -199,7 +197,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Final CTA - Solid High Contrast Background (No background image here) */}
+        {/* Final CTA */}
         <section className="py-32 bg-primary text-white">
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-4xl mx-auto space-y-10">

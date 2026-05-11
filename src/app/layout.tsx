@@ -5,8 +5,8 @@ import { FirebaseClientProvider } from '@/firebase';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Nayoth Divine Power Christian Center | Ngome ya Bwana',
-  description: 'Karibu N.D.P.C.C - Ngome ya Bwana kwa makimbilio ya watu wake. Tunaliandaa kanisa kwa ajili ya unyakuo na kuinua jeshi la kiroho.',
+  title: 'Mamawata | Ngome ya Bwana',
+  description: 'Karibu Mamawata - Ngome ya Bwana kwa makimbilio ya watu wake. Tunaliandaa kanisa kwa ajili ya unyakuo na kuinua jeshi la kiroho.',
 };
 
 export default function RootLayout({

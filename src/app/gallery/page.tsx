@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -45,11 +46,11 @@ export default function GalleryPage() {
     { id: 6, title: "Semina ya Vijana", category: "Huduma", image: Img6, description: "Kuinua jeshi la kiroho katika kizazi hiki." },
     { id: 7, title: "Siku ya Shukurani", category: "Ibada", image: Img7, description: "Kumshukuru Bwana kwa makuu aliyotutendea." },
     { id: 8, title: "Ushirika wa Meza", category: "Ushirika", image: Img8, description: "Kuvunja mkate na kushiriki baraka." },
-    { id: 9, title: "Huduma ya Jamii", category: "Huduma", image: Img9, description: "Kusaidia wahitaji kupitia Gibea Foundation." },
-    { id: 10, title: "Maandalizi ya Kiroho", category: "Huduma", image: Img10, description: "Kujiandaa kwa ajili ya unyakuo wa watakatifu." },
+    { id: 9, title: "Huduma ya Jamii", category: "Huduma", image: Img9, description: "Kusaidia wahitaji kupitia Mamawata Foundation." },
+    { id: 10, title: "Maandalizi ya Kiroho", category: "Huduma", image: Img10, description: "Kujiandaa kwa ajili ya unyakuo of watakatifu." },
     { id: 11, title: "Uamsho wa Kiroho", category: "Ibada", image: Img11, description: "Nguvu ya Roho Mtakatifu ikishuka katikati yetu." },
     { id: 12, title: "Mkutano wa Injili", category: "Mikutano", image: Img1, description: "Kuhubiri habari njema mitaani." },
-    { id: 13, title: "Kwaya ya NDPCC", category: "Ibada", image: Img2, description: "Uimbaji unaogusa mioyo." },
+    { id: 13, title: "Kwaya ya Mamawata", category: "Ibada", image: Img2, description: "Uimbaji unaogusa mioyo." },
     { id: 14, title: "Mafunzo ya Biblia", category: "Huduma", image: Img3, description: "Kuchunguza maandiko kwa ajili ya ukuaji." },
     { id: 15, title: "Siku ya Watoto", category: "Ushirika", image: Img4, description: "Kuinua watoto katika njia ya Bwana." },
     { id: 16, title: "Huduma ya Wanawake", category: "Huduma", image: Img5, description: "Kuinua wanawake wenye nguvu katika imani." },
@@ -74,7 +75,7 @@ export default function GalleryPage() {
           </div>
           <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary mb-4">Safari yetu katika Picha</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Matukio ya ibada, mafunzo, na mikutano ya nje kupitia picha za N.D.P.C.C.
+            Matukio ya ibada, mafunzo, na mikutano ya nje kupitia picha za Mamawata.
           </p>
         </header>
 

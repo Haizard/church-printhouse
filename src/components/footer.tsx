@@ -17,13 +17,13 @@ export function Footer() {
               <div className="relative h-20 w-20 overflow-hidden rounded-full border border-primary/10 bg-white">
                 <Image 
                   src={Logo} 
-                  alt="N.D.P.C.C. Logo" 
+                  alt="Mamawata Logo" 
                   fill 
                   className="object-contain"
                 />
               </div>
               <span className="text-2xl font-headline font-bold text-primary leading-tight">
-                Nayoth Divine Power<br/>Christian Center
+                Mamawata
               </span>
             </Link>
             <p className="text-xl text-muted-foreground leading-relaxed max-w-md font-medium">
@@ -62,18 +62,18 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-4 text-xl text-muted-foreground font-bold">
                 <Phone className="h-8 w-8 text-primary shrink-0" />
-                <span>+255 OFFICE</span>
+                <span>+255 Mamawata</span>
               </li>
               <li className="flex items-center gap-4 text-xl text-muted-foreground font-bold">
                 <Mail className="h-8 w-8 text-primary shrink-0" />
-                <span>info@ndpcc.or.tz</span>
+                <span>info@mamawata.or.tz</span>
               </li>
             </ul>
           </div>
         </div>
         
         <div className="mt-24 pt-12 border-t flex flex-col md:flex-row justify-between items-center gap-8 text-sm text-muted-foreground uppercase tracking-[0.2em] font-bold">
-          <p>© {new Date().getFullYear()} N.D.P.C.C. Haki zote zimehifadhiwa.</p>
+          <p>© {new Date().getFullYear()} Mamawata. Haki zote zimehifadhiwa.</p>
           <div className="flex gap-10">
             <Link href="/login" className="hover:text-primary transition-colors">Staff Login</Link>
           </div>

@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -50,13 +51,13 @@ export function Navbar() {
             <div className="relative h-12 w-12 overflow-hidden rounded-full border border-primary/10 bg-white">
               <Image 
                 src={Logo} 
-                alt="N.D.P.C.C. Logo" 
+                alt="Mamawata Logo" 
                 fill 
                 className="object-contain"
               />
             </div>
             <span className="text-xl font-headline font-bold text-primary tracking-tight hidden sm:block">
-              N.D.P.C.C.
+              Mamawata
             </span>
           </Link>
         </div>
@@ -113,13 +114,13 @@ export function Navbar() {
                     <div className="relative h-12 w-12 overflow-hidden rounded-full border border-primary/10 bg-white">
                       <Image 
                         src={Logo} 
-                        alt="N.D.P.C.C. Logo" 
+                        alt="Mamawata Logo" 
                         fill 
                         className="object-contain"
                       />
                     </div>
                     <span className="text-xl font-headline font-bold text-primary leading-tight">
-                      Nayoth Divine Power<br/>Christian Center
+                      Mamawata
                     </span>
                   </Link>
                   <div className="flex flex-col gap-6">
