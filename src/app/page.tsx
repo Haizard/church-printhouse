@@ -13,7 +13,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
 
-// Importing local images for homepage sections
+// Local high-contrast imagery
 import HeroImageOne from "@/images/_B4A1507.jpg";
 import HeroImageTwo from "@/images/_B4A1498.jpg";
 import HeroImageThree from "@/images/_B4A1527.jpg";
@@ -76,21 +76,18 @@ export default function Home() {
     { id: "e1", title: "Ibada ya Jumapili", date: "Kila Jumapili", time: "09:00 AM", category: "Ibada", description: "Karibu tushiriki sifa na neno la uzima." },
     { id: "e2", title: "Semina ya Vijana", date: "Jumamosi Hii", time: "03:00 PM", category: "Huduma", description: "Kuinua jeshi la kiroho katika kizazi hiki." },
     { id: "e3", title: "Mkutano wa Injili", date: "20 Mei 2024", time: "04:30 PM", category: "Mikutano", description: "Kufikisha habari njema mitaani." },
-    { id: "e4", title: "Mkesha wa Maombi", date: "Ijumaa ya Kwanza", time: "10:00 PM", category: "Maombi", description: "Kujiandaa kwa ajili ya unyakuo kupitia magoti." },
   ];
 
   const sampleSermons = [
     { id: "s1", title: "Nguvu ya Utakatifu", speaker: "Askofu", topic: "Utakatifu", image: WorshipImage },
     { id: "s2", title: "Jeshi la Mwisho", speaker: "Mchungaji", topic: "Uamsho", image: HeroImageOne },
     { id: "s3", title: "Kimbilio la Kweli", speaker: "Mtumishi", topic: "Imani", image: HeroImageThree },
-    { id: "s4", title: "Unyakuo wa Kanisa", speaker: "Askofu", topic: "Biblia", image: CommunityImageOne },
   ];
 
   const sampleBlogs = [
     { id: "b1", title: "Safari yetu tangu 1992", category: "Historia", summary: "Jinsi Bwana alivyoanzisha huduma hii ya kipekee.", image: BlogFeatureImageOne },
     { id: "b2", title: "Huduma kwa Mayatima", category: "Foundation", summary: "Gibea Foundation ikigusa maisha ya wahitaji.", image: BlogFeatureImageTwo },
-    { id: "b3", title: "Maandalizi ya Unyakuo", category: "Mafundisho", summary: "Nini unapaswa kufanya ukiwa Mkristo katika nyakati hizi.", image: IdentityImage },
-    { id: "b4", title: "Umoja wa Kanisa", category: "Ushirika", summary: "Kujenga jeshi lenye nguvu kupitia upendo na umoja.", image: CommunityImageTwo },
+    { id: "b3", title: "Maandalizi ya Unyakuo", category: "Mafundisho", summary: "Nini unapaswa kufanya ukiwa Mkristo.", image: IdentityImage },
   ];
 
   const communityGallery = [
@@ -110,24 +107,24 @@ export default function Home() {
             <CarouselContent className="h-full">
               {heroSlides.map((slide, index) => (
                 <CarouselItem key={index} className="relative h-full basis-full">
-                  <Image src={slide.image} alt={slide.title} fill priority className="object-cover" />
+                  <Image src={slide.image} alt={slide.title} fill priority className="object-cover opacity-100" />
                   <div className="absolute inset-0 bg-black/20 pointer-events-none" />
                   <div className="absolute inset-0 px-4 md:px-8 pointer-events-none">
                     <div className="container mx-auto flex h-full items-center">
                       <div className="max-w-4xl pointer-events-auto">
                         <h1 className="text-5xl md:text-8xl font-headline font-bold leading-[0.96] tracking-tight text-white drop-shadow-2xl">{slide.title}</h1>
                         <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl">
-                          <div className="rounded-3xl border border-white/20 bg-white/10 px-6 py-6 text-white backdrop-blur-md">
-                            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/80">Utume</p>
-                            <p className="mt-2 text-lg font-bold leading-tight">Kuliandaa Kanisa</p>
+                          <div className="hero-stat-card">
+                            <p className="hero-stat-label">Utume</p>
+                            <p className="hero-stat-value">Kuliandaa Kanisa</p>
                           </div>
-                          <div className="rounded-3xl border border-white/20 bg-white/10 px-6 py-6 text-white backdrop-blur-md">
-                            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/80">Jeshi</p>
-                            <p className="mt-2 text-lg font-bold leading-tight">Kuinua Watumishi</p>
+                          <div className="hero-stat-card">
+                            <p className="hero-stat-label">Jeshi</p>
+                            <p className="hero-stat-value">Kuinua Watumishi</p>
                           </div>
-                          <div className="rounded-3xl border border-white/20 bg-white/10 px-6 py-6 text-white backdrop-blur-md hidden md:block">
-                            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/80">Injili</p>
-                            <p className="mt-2 text-lg font-bold leading-tight">Kufikia Mataifa</p>
+                          <div className="hero-stat-card hidden md:block">
+                            <p className="hero-stat-label">Injili</p>
+                            <p className="hero-stat-value">Kufikia Mataifa</p>
                           </div>
                         </div>
                       </div>
@@ -139,44 +136,44 @@ export default function Home() {
           </Carousel>
         </section>
 
-        {/* 2. Mission Band */}
-        <section className="relative z-20 -mt-20 px-4 md:px-8">
+        {/* 2. Mission Band - Glass Cards */}
+        <section className="mission-band-shell">
           <div className="container mx-auto">
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-              <Card className="rounded-[2rem] border border-white/70 bg-[#fbfaf7]/90 shadow-xl shadow-primary/5 backdrop-blur-md">
+            <div className="mission-band-grid">
+              <Card className="mission-band-card">
                 <CardContent className="p-8 space-y-4">
                   <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary">
                     <Shield className="h-4 w-4" /> Kuliandaa Kanisa
                   </span>
-                  <p className="text-sm text-muted-foreground leading-relaxed">Tunalijenga kanisa kuwa tayari kwa unyakuo kupitia mafundisho ya utakatifu na maandalizi ya kiroho.</p>
+                  <p className="mission-band-copy">Tunalijenga kanisa kuwa tayari kwa unyakuo kupitia mafundisho ya utakatifu na maandalizi ya kiroho.</p>
                 </CardContent>
               </Card>
-              <Card className="rounded-[2rem] border border-white/70 bg-[#fbfaf7]/90 shadow-xl shadow-primary/5 backdrop-blur-md">
+              <Card className="mission-band-card">
                 <CardContent className="p-8 space-y-4">
                   <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary">
                     <Swords className="h-4 w-4" /> Kuinua Jeshi
                   </span>
-                  <p className="text-sm text-muted-foreground leading-relaxed">Tunainua watumishi na waamini kupitia uamsho wa kweli wa Roho Mtakatifu duniani kote.</p>
+                  <p className="mission-band-copy">Tunainua watumishi na waamini kupitia uamsho wa kweli wa Roho Mtakatifu duniani kote.</p>
                 </CardContent>
               </Card>
-              <Card className="rounded-[2rem] border border-white/70 bg-[#fbfaf7]/90 shadow-xl shadow-primary/5 backdrop-blur-md hidden lg:block">
+              <Card className="mission-band-card hidden lg:block">
                 <CardContent className="p-8 space-y-4">
                   <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold text-primary">
                     <Globe className="h-4 w-4" /> Uinjilisti
                   </span>
-                  <p className="text-sm text-muted-foreground leading-relaxed">Tunaeneza injili ya ufalme kwa mataifa yote kupitia kila njia ya ushuhuda na mikutano ya nje.</p>
+                  <p className="mission-band-copy">Tunaeneza injili ya ufalme kwa mataifa yote kupitia kila njia ya ushuhuda na mikutano ya nje.</p>
                 </CardContent>
               </Card>
             </div>
           </div>
         </section>
 
-        {/* 3. Identity Section */}
+        {/* 3. Identity - High Contrast Photography */}
         <section className="py-24 px-4 md:px-8 bg-[#fdfbf7]">
           <div className="container mx-auto">
             <div className="relative min-h-[500px] overflow-hidden rounded-[3rem] shadow-2xl bg-black">
-              <Image src={IdentityImage} alt="Identity" fill className="object-cover" />
-              <div className="absolute inset-0 bg-black/30" />
+              <Image src={IdentityImage} alt="Identity" fill className="object-cover opacity-100" />
+              <div className="absolute inset-0 bg-black/20" />
               <div className="relative z-10 flex h-full flex-col justify-center p-8 md:p-16 text-white max-w-2xl">
                 <p className="section-header-kicker text-white/80">Maono ya Nayoth</p>
                 <h2 className="text-4xl md:text-6xl font-headline font-bold leading-tight">Ngome ya Bwana kwa Makimbilio ya Watu Wake.</h2>
@@ -189,13 +186,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 4. Featured Events */}
+        {/* 4. Events - Editorial Grid */}
         <section className="py-24 bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Ushirika Wetu" title="Matukio Yajayo" actionHref="/events" actionText="Ona Yote" />
-            <div className="community-mosaic">
-              {sampleEvents.slice(0, 3).map((event) => (
-                <Card key={event.id} className="h-full rounded-[2.5rem] border border-primary/5 bg-slate-50/50 hover:shadow-xl transition-all">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+              {sampleEvents.map((event) => (
+                <Card key={event.id} className="event-editorial-card">
                   <CardContent className="p-8 space-y-6">
                     <Badge className="bg-primary/10 text-primary border-none rounded-full px-4 py-1">{event.date}</Badge>
                     <h3 className="text-2xl font-headline font-bold text-primary line-clamp-1">{event.title}</h3>
@@ -211,9 +208,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 5. Worship / Scripture Highlight - High Contrast, Solid Background */}
-        <section className="relative py-24 overflow-hidden text-center text-white bg-primary">
-          <div className="container relative z-10 mx-auto px-4 max-w-4xl space-y-8">
+        {/* 5. Scripture Highlight - Solid Background, No Image */}
+        <section className="py-24 text-center text-white bg-primary">
+          <div className="container mx-auto px-4 max-w-4xl space-y-8">
             <Cross className="h-14 w-14 text-accent mx-auto mb-4" />
             <h2 className="text-3xl md:text-5xl font-headline font-bold leading-tight">
               "Siionei haya Injili kwa maana ni uweza wa Mungu uletao wokovu kwa kila aaminiye."
@@ -222,13 +219,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 6. Recent Sermons */}
+        {/* 6. Sermons - Media Rich Cards */}
         <section className="py-24 bg-slate-50">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Neno la Bwana" title="Mahubiri Mapya" actionHref="/sermons" actionText="Ona Yote" />
-            <div className="community-mosaic">
-              {sampleSermons.slice(0, 3).map((sermon) => (
-                <Card key={sermon.id} className="h-full border-none bg-white shadow-lg overflow-hidden rounded-[2.5rem] group">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+              {sampleSermons.map((sermon) => (
+                <Card key={sermon.id} className="sermon-feature-card group">
                   <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
                     <Image src={sermon.image} alt={sermon.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
                     <div className="absolute bottom-4 left-4"><Badge className="bg-white/90 text-primary border-none text-[10px] font-bold uppercase tracking-wider">{sermon.topic}</Badge></div>
@@ -243,16 +240,18 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 7. Community Photography */}
+        {/* 7. Community Gallery - 2x3 Grid */}
         <section className="py-24 px-4 md:px-8 bg-white">
           <div className="container mx-auto">
             <SectionHeader kicker="Maisha ya Kanisa" title="Picha za Ushirika" actionHref="/gallery" actionText="Nyumba ya Picha" />
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="community-mosaic">
               {communityGallery.map((item, i) => (
-                <div key={i} className="relative overflow-hidden rounded-[2.5rem] aspect-square group shadow-lg bg-slate-100">
+                <div key={i} className="community-mosaic-card group">
                   <Image src={item.image} alt={item.title} fill className="object-cover transition-transform group-hover:scale-110 duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex items-end">
-                    <p className="text-white font-headline font-bold text-xl">{item.title}</p>
+                  <div className="community-mosaic-overlay opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="community-mosaic-copy">
+                      <p className="community-mosaic-title">{item.title}</p>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -260,12 +259,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 8. Blog Section */}
+        {/* 8. Blog - Editorial Cards */}
         <section className="py-24 bg-slate-50">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Tafakari Yetu" title="Makala za Blogu" actionHref="/blog" actionText="Soma Yote" />
-            <div className="community-mosaic">
-              {sampleBlogs.slice(0, 3).map((blog) => (
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+              {sampleBlogs.map((blog) => (
                 <Card key={blog.id} className="rounded-[2.5rem] border-none shadow-sm overflow-hidden bg-white flex flex-col h-full hover:shadow-xl transition-all">
                   <div className="relative aspect-video bg-slate-100"><Image src={blog.image} alt={blog.title} fill className="object-cover" /></div>
                   <div className="p-8 flex flex-col flex-grow">
@@ -280,7 +279,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 9. Vision & Mission Cards */}
+        {/* 9. Vision/Mission Cards - Final Section */}
         <section className="py-24 px-4 md:px-8 bg-white border-t">
           <div className="container mx-auto">
             <SectionHeader kicker="Dira na Utume" title="Misingi ya Huduma Yetu" />

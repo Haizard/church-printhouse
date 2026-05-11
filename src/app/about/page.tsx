@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-// Static imports for high contrast local images
+// Static imports for local high-resolution images
 import IdentityImage from "@/images/_B4A1451.jpg";
 import CommunityImageOne from "@/images/_B4A1466.jpg";
 
@@ -53,29 +53,29 @@ export default function AboutPage() {
       <Navbar />
       
       <main className="flex-grow">
-        {/* Hero Section - High Contrast No Blur */}
+        {/* Hero Section - High Contrast No Overlays */}
         <section className="relative h-[60vh] min-h-[400px] bg-black text-white overflow-hidden">
           <div className="absolute inset-0">
             <Image 
               src={IdentityImage} 
               alt="About NDPCC" 
               fill 
-              className="object-cover"
+              className="object-cover opacity-100"
               priority
             />
-            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-black/10" />
           </div>
           <div className="container mx-auto px-4 h-full flex items-center justify-center text-center relative z-10">
             <div className="max-w-3xl">
               <h1 className="text-5xl md:text-8xl font-headline font-bold mb-6 drop-shadow-2xl">Kuhusu N.D.P.C.C.</h1>
-              <p className="text-xl md:text-3xl opacity-100 font-bold leading-relaxed italic drop-shadow-lg text-white">
+              <p className="text-xl md:text-3xl font-bold italic drop-shadow-lg text-white">
                 "Ngome ya Bwana kwa Makimbilio ya Watu Wake"
               </p>
             </div>
           </div>
         </section>
 
-        {/* Vision Pillars Grid - Strict 2/3 Rule */}
+        {/* Pillars - 2 mobile, 3 desktop */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <header className="text-center mb-16">
@@ -99,15 +99,16 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Detailed Content - High Contrast BG with No Blur Overlays */}
+        {/* Detailed History - High Contrast Background Image, No Blur */}
         <section className="relative py-24 md:py-32 overflow-hidden bg-black">
           <div className="absolute inset-0">
             <Image 
               src={CommunityImageOne} 
-              alt="Church Life" 
+              alt="History Background" 
               fill 
               className="object-cover opacity-100"
             />
+            {/* Minimal overlay to ensure text readability while maintaining high contrast */}
             <div className="absolute inset-0 bg-black/40" />
           </div>
           
@@ -198,7 +199,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Final CTA - Clean Solid Background */}
+        {/* Final CTA - Solid High Contrast Background */}
         <section className="py-32 bg-primary text-white">
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-4xl mx-auto space-y-10">
