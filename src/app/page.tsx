@@ -111,7 +111,7 @@ export default function Home() {
               {heroSlides.map((slide, index) => (
                 <CarouselItem key={index} className="relative h-full basis-full">
                   <Image src={slide.image} alt={slide.title} fill priority className="object-cover" />
-                  <div className="absolute inset-0 bg-black/30 pointer-events-none" />
+                  <div className="absolute inset-0 bg-black/20 pointer-events-none" />
                   <div className="absolute inset-0 px-4 md:px-8 pointer-events-none">
                     <div className="container mx-auto flex h-full items-center">
                       <div className="max-w-4xl pointer-events-auto">
@@ -176,7 +176,7 @@ export default function Home() {
           <div className="container mx-auto">
             <div className="relative min-h-[500px] overflow-hidden rounded-[3rem] shadow-2xl bg-black">
               <Image src={IdentityImage} alt="Identity" fill className="object-cover" />
-              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute inset-0 bg-black/30" />
               <div className="relative z-10 flex h-full flex-col justify-center p-8 md:p-16 text-white max-w-2xl">
                 <p className="section-header-kicker text-white/80">Maono ya Nayoth</p>
                 <h2 className="text-4xl md:text-6xl font-headline font-bold leading-tight">Ngome ya Bwana kwa Makimbilio ya Watu Wake.</h2>
@@ -193,37 +193,32 @@ export default function Home() {
         <section className="py-24 bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Ushirika Wetu" title="Matukio Yajayo" actionHref="/events" actionText="Ona Yote" />
-            <Carousel className="w-full">
-              <CarouselContent className="-ml-4" opts={{ align: "start" }}>
-                {sampleEvents.map((event) => (
-                  <CarouselItem key={event.id} className="basis-full md:basis-1/2 lg:basis-1/3 pl-4">
-                    <Card className="h-full rounded-[2.5rem] border border-primary/5 bg-slate-50/50 hover:shadow-xl transition-all">
-                      <CardContent className="p-8 space-y-6">
-                        <Badge className="bg-primary/10 text-primary border-none rounded-full px-4 py-1">{event.date}</Badge>
-                        <h3 className="text-2xl font-headline font-bold text-primary line-clamp-1">{event.title}</h3>
-                        <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">{event.description}</p>
-                        <div className="pt-4 border-t border-primary/10 flex items-center justify-between text-xs font-bold">
-                          <span className="text-primary/60 flex items-center gap-1"><Clock className="h-3 w-3" /> {event.time}</span>
-                          <Link href={`/events/${event.id}`} className="text-accent hover:underline">Angalia Zaidi</Link>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
+            <div className="community-mosaic">
+              {sampleEvents.slice(0, 3).map((event) => (
+                <Card key={event.id} className="h-full rounded-[2.5rem] border border-primary/5 bg-slate-50/50 hover:shadow-xl transition-all">
+                  <CardContent className="p-8 space-y-6">
+                    <Badge className="bg-primary/10 text-primary border-none rounded-full px-4 py-1">{event.date}</Badge>
+                    <h3 className="text-2xl font-headline font-bold text-primary line-clamp-1">{event.title}</h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">{event.description}</p>
+                    <div className="pt-4 border-t border-primary/10 flex items-center justify-between text-xs font-bold">
+                      <span className="text-primary/60 flex items-center gap-1"><Clock className="h-3 w-3" /> {event.time}</span>
+                      <Link href={`/events/${event.id}`} className="text-accent hover:underline">Angalia Zaidi</Link>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* 5. Worship / Scripture Highlight - High Contrast, No solid wash */}
-        <section className="relative py-24 overflow-hidden text-center text-white bg-black">
-          <Image src={WorshipImage} alt="Worship" fill className="object-cover opacity-60" />
+        {/* 5. Worship / Scripture Highlight - High Contrast, Solid Background */}
+        <section className="relative py-24 overflow-hidden text-center text-white bg-primary">
           <div className="container relative z-10 mx-auto px-4 max-w-4xl space-y-8">
             <Cross className="h-14 w-14 text-accent mx-auto mb-4" />
-            <h2 className="text-3xl md:text-5xl font-headline font-bold leading-tight drop-shadow-xl">
+            <h2 className="text-3xl md:text-5xl font-headline font-bold leading-tight">
               "Siionei haya Injili kwa maana ni uweza wa Mungu uletao wokovu kwa kila aaminiye."
             </h2>
-            <p className="text-2xl font-bold text-accent tracking-widest uppercase mt-4 drop-shadow-lg">WARUMI 1:16</p>
+            <p className="text-2xl font-bold text-accent tracking-widest uppercase mt-4">WARUMI 1:16</p>
           </div>
         </section>
 
@@ -231,24 +226,20 @@ export default function Home() {
         <section className="py-24 bg-slate-50">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Neno la Bwana" title="Mahubiri Mapya" actionHref="/sermons" actionText="Ona Yote" />
-            <Carousel className="w-full">
-              <CarouselContent className="-ml-4" opts={{ align: "start" }}>
-                {sampleSermons.map((sermon) => (
-                  <CarouselItem key={sermon.id} className="basis-full md:basis-1/2 lg:basis-1/3 pl-4">
-                    <Card className="h-full border-none bg-white shadow-lg overflow-hidden rounded-[2.5rem] group">
-                      <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
-                        <Image src={sermon.image} alt={sermon.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                        <div className="absolute bottom-4 left-4"><Badge className="bg-white/90 text-primary border-none text-[10px] font-bold uppercase tracking-wider">{sermon.topic}</Badge></div>
-                      </div>
-                      <CardHeader className="p-8">
-                        <CardTitle className="text-2xl font-headline line-clamp-1 group-hover:text-primary transition-colors">{sermon.title}</CardTitle>
-                        <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest mt-2">{sermon.speaker}</p>
-                      </CardHeader>
-                    </Card>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
+            <div className="community-mosaic">
+              {sampleSermons.slice(0, 3).map((sermon) => (
+                <Card key={sermon.id} className="h-full border-none bg-white shadow-lg overflow-hidden rounded-[2.5rem] group">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
+                    <Image src={sermon.image} alt={sermon.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute bottom-4 left-4"><Badge className="bg-white/90 text-primary border-none text-[10px] font-bold uppercase tracking-wider">{sermon.topic}</Badge></div>
+                  </div>
+                  <CardHeader className="p-8">
+                    <CardTitle className="text-2xl font-headline line-clamp-1 group-hover:text-primary transition-colors">{sermon.title}</CardTitle>
+                    <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest mt-2">{sermon.speaker}</p>
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -273,27 +264,23 @@ export default function Home() {
         <section className="py-24 bg-slate-50">
           <div className="container mx-auto px-4 md:px-8">
             <SectionHeader kicker="Tafakari Yetu" title="Makala za Blogu" actionHref="/blog" actionText="Soma Yote" />
-            <Carousel className="w-full">
-              <CarouselContent className="-ml-4" opts={{ align: "start" }}>
-                {sampleBlogs.map((blog) => (
-                  <CarouselItem key={blog.id} className="basis-full md:basis-1/2 lg:basis-1/3 pl-4">
-                    <Card className="rounded-[2.5rem] border-none shadow-sm overflow-hidden bg-white flex flex-col h-full hover:shadow-xl transition-all">
-                      <div className="relative aspect-video bg-slate-100"><Image src={blog.image} alt={blog.title} fill className="object-cover" /></div>
-                      <div className="p-8 flex flex-col flex-grow">
-                        <Badge variant="outline" className="w-fit mb-4 text-[10px] font-bold uppercase border-primary/20 text-primary">{blog.category}</Badge>
-                        <h3 className="text-2xl font-headline font-bold text-primary mb-4 line-clamp-2">{blog.title}</h3>
-                        <p className="text-sm text-muted-foreground line-clamp-2 mb-6 leading-relaxed">{blog.summary}</p>
-                        <Link href={`/blog/${blog.id}`} className="mt-auto text-xs font-bold text-accent hover:underline flex items-center gap-2">Soma Zaidi <ArrowRight className="h-4 w-4" /></Link>
-                      </div>
-                    </Card>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
+            <div className="community-mosaic">
+              {sampleBlogs.slice(0, 3).map((blog) => (
+                <Card key={blog.id} className="rounded-[2.5rem] border-none shadow-sm overflow-hidden bg-white flex flex-col h-full hover:shadow-xl transition-all">
+                  <div className="relative aspect-video bg-slate-100"><Image src={blog.image} alt={blog.title} fill className="object-cover" /></div>
+                  <div className="p-8 flex flex-col flex-grow">
+                    <Badge variant="outline" className="w-fit mb-4 text-[10px] font-bold uppercase border-primary/20 text-primary">{blog.category}</Badge>
+                    <h3 className="text-2xl font-headline font-bold text-primary mb-4 line-clamp-2">{blog.title}</h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2 mb-6 leading-relaxed">{blog.summary}</p>
+                    <Link href={`/blog/${blog.id}`} className="mt-auto text-xs font-bold text-accent hover:underline flex items-center gap-2">Soma Zaidi <ArrowRight className="h-4 w-4" /></Link>
+                  </div>
+                </Card>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* 9. Vision & Mission Cards - Replaced per user request */}
+        {/* 9. Vision & Mission Cards */}
         <section className="py-24 px-4 md:px-8 bg-white border-t">
           <div className="container mx-auto">
             <SectionHeader kicker="Dira na Utume" title="Misingi ya Huduma Yetu" />

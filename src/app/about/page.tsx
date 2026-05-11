@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -52,7 +53,7 @@ export default function AboutPage() {
       <Navbar />
       
       <main className="flex-grow">
-        {/* Hero Section - High Contrast */}
+        {/* Hero Section - High Contrast No Blur */}
         <section className="relative h-[60vh] min-h-[400px] bg-black text-white overflow-hidden">
           <div className="absolute inset-0">
             <Image 
@@ -74,7 +75,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Vision Pillars Grid - 2 on mobile, 3 on desktop */}
+        {/* Vision Pillars Grid - Strict 2/3 Rule */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 md:px-8">
             <header className="text-center mb-16">
@@ -98,7 +99,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Detailed Content - High Contrast Background */}
+        {/* Detailed Content - High Contrast BG with No Blur Overlays */}
         <section className="relative py-24 md:py-32 overflow-hidden bg-black">
           <div className="absolute inset-0">
             <Image 
@@ -107,13 +108,13 @@ export default function AboutPage() {
               fill 
               className="object-cover opacity-100"
             />
-            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute inset-0 bg-black/40" />
           </div>
           
           <div className="container mx-auto px-4 md:px-8 max-w-4xl relative z-10">
             <Accordion type="single" collapsible className="w-full space-y-6">
               
-              <AccordionItem value="history" className="bg-white/95 border-none rounded-[2.5rem] px-8 shadow-2xl">
+              <AccordionItem value="history" className="bg-white border-none rounded-[2.5rem] px-8 shadow-2xl">
                 <AccordionTrigger className="hover:no-underline py-8">
                   <div className="flex items-center gap-5 text-left">
                     <div className="p-3 bg-primary/10 rounded-xl">
@@ -137,7 +138,7 @@ export default function AboutPage() {
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="vision" className="bg-white/95 border-none rounded-[2.5rem] px-8 shadow-2xl">
+              <AccordionItem value="vision" className="bg-white border-none rounded-[2.5rem] px-8 shadow-2xl">
                 <AccordionTrigger className="hover:no-underline py-8">
                   <div className="flex items-center gap-5 text-left">
                     <div className="p-3 bg-primary/10 rounded-xl">
@@ -163,7 +164,7 @@ export default function AboutPage() {
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="foundation" className="bg-white/95 border-none rounded-[2.5rem] px-8 shadow-2xl">
+              <AccordionItem value="foundation" className="bg-white border-none rounded-[2.5rem] px-8 shadow-2xl">
                 <AccordionTrigger className="hover:no-underline py-8">
                   <div className="flex items-center gap-5 text-left">
                     <div className="p-3 bg-accent/10 rounded-xl">
@@ -197,7 +198,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Final CTA - Clean High Contrast Background */}
+        {/* Final CTA - Clean Solid Background */}
         <section className="py-32 bg-primary text-white">
           <div className="container mx-auto px-4 text-center">
             <div className="max-w-4xl mx-auto space-y-10">

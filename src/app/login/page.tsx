@@ -3,7 +3,12 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { 
+  signInWithEmailAndPassword, 
+  createUserWithEmailAndPassword,
+  signInWithPopup, 
+  GoogleAuthProvider 
+} from 'firebase/auth';
 import { useAuth, useUser } from '@/firebase';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,9 +17,10 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
-import { LogIn, Loader2 } from 'lucide-react';
+import { LogIn, Loader2, UserPlus } from 'lucide-react';
 
 export default function LoginPage() {
+  const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -29,16 +35,25 @@ export default function LoginPage() {
     }
   }, [user, router]);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!auth) return;
     setLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      toast({ title: 'Success', description: 'Logged in successfully' });
+      if (isLogin) {
+        await signInWithEmailAndPassword(auth, email, password);
+        toast({ title: 'Welcome Back', description: 'Logged in successfully' });
+      } else {
+        await createUserWithEmailAndPassword(auth, email, password);
+        toast({ title: 'Account Created', description: 'Your admin account is ready' });
+      }
       router.push('/admin');
     } catch (error: any) {
-      toast({ title: 'Login failed', description: error.message, variant: 'destructive' });
+      toast({ 
+        title: isLogin ? 'Login failed' : 'Registration failed', 
+        description: error.message, 
+        variant: 'destructive' 
+      });
     } finally {
       setLoading(false);
     }
@@ -63,22 +78,26 @@ export default function LoginPage() {
     <div className="flex min-h-screen flex-col bg-slate-50">
       <Navbar />
       <main className="flex-grow flex items-center justify-center p-4 py-12 md:py-24">
-        <Card className="w-full max-w-md border-none shadow-2xl rounded-3xl overflow-hidden bg-white">
+        <Card className="w-full max-w-md border-none shadow-2xl rounded-[2.5rem] overflow-hidden bg-white">
           <CardHeader className="space-y-2 text-center pb-8 pt-10">
             <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit mb-2">
-              <LogIn className="h-8 w-8 text-primary" />
+              {isLogin ? <LogIn className="h-8 w-8 text-primary" /> : <UserPlus className="h-8 w-8 text-primary" />}
             </div>
-            <CardTitle className="text-3xl font-headline font-bold text-primary">Admin Access</CardTitle>
-            <CardDescription>Rooted in faith, managed with care.</CardDescription>
+            <CardTitle className="text-3xl font-headline font-bold text-primary">
+              {isLogin ? 'Admin Access' : 'Create Admin'}
+            </CardTitle>
+            <CardDescription>
+              {isLogin ? 'Rooted in faith, managed with care.' : 'Set up your management account.'}
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6 px-8 pb-12">
-            <form onSubmit={handleLogin} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email">Email Address</Label>
                 <Input 
                   id="email" 
                   type="email" 
-                  placeholder="admin@evergreensanctuary.org" 
+                  placeholder="admin@ndpcc.or.tz" 
                   value={email} 
                   onChange={(e) => setEmail(e.target.value)} 
                   required 
@@ -97,13 +116,23 @@ export default function LoginPage() {
                 />
               </div>
               <Button type="submit" className="w-full h-12 rounded-xl text-lg font-bold shadow-lg" disabled={loading}>
-                {loading ? <Loader2 className="animate-spin h-5 w-5" /> : 'Sign In'}
+                {loading ? <Loader2 className="animate-spin h-5 w-5" /> : (isLogin ? 'Sign In' : 'Register')}
               </Button>
             </form>
             
+            <div className="text-center">
+              <Button 
+                variant="link" 
+                onClick={() => setIsLogin(!isLogin)} 
+                className="text-primary font-bold"
+              >
+                {isLogin ? "Need to create an account? Sign Up" : "Already have an account? Sign In"}
+              </Button>
+            </div>
+            
             <div className="relative">
               <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-slate-100" /></div>
-              <div className="relative flex justify-center text-xs uppercase"><span className="bg-white px-2 text-muted-foreground">Authorized Personnel Only</span></div>
+              <div className="relative flex justify-center text-[10px] uppercase tracking-widest"><span className="bg-white px-2 text-muted-foreground font-bold">Authorized Personnel Only</span></div>
             </div>
             
             <Button variant="outline" className="w-full h-12 rounded-xl border-slate-200 hover:bg-slate-50 transition-colors" onClick={handleGoogleLogin} disabled={loading}>
