@@ -1,8 +1,9 @@
+
 'use client';
 
 /**
  * @fileOverview Firebase configuration for the duplicated project.
- * These values should be provided in your .env file or the Firebase console.
+ * These values are pulled from the .env file.
  */
 
 export const firebaseConfig = {

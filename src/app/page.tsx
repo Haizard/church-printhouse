@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -214,14 +215,15 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 5. Worship / Scripture Highlight */}
-        <section className="py-24 bg-primary text-white text-center">
-          <div className="container mx-auto px-4 max-w-4xl space-y-8">
+        {/* 5. Worship / Scripture Highlight - High Contrast, No solid wash */}
+        <section className="relative py-24 overflow-hidden text-center text-white bg-black">
+          <Image src={WorshipImage} alt="Worship" fill className="object-cover opacity-60" />
+          <div className="container relative z-10 mx-auto px-4 max-w-4xl space-y-8">
             <Cross className="h-14 w-14 text-accent mx-auto mb-4" />
-            <h2 className="text-3xl md:text-5xl font-headline font-bold leading-tight">
+            <h2 className="text-3xl md:text-5xl font-headline font-bold leading-tight drop-shadow-xl">
               "Siionei haya Injili kwa maana ni uweza wa Mungu uletao wokovu kwa kila aaminiye."
             </h2>
-            <p className="text-2xl font-bold text-accent tracking-widest uppercase mt-4">WARUMI 1:16</p>
+            <p className="text-2xl font-bold text-accent tracking-widest uppercase mt-4 drop-shadow-lg">WARUMI 1:16</p>
           </div>
         </section>
 
@@ -291,7 +293,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 9. Vision & Mission Cards */}
+        {/* 9. Vision & Mission Cards - Replaced per user request */}
         <section className="py-24 px-4 md:px-8 bg-white border-t">
           <div className="container mx-auto">
             <SectionHeader kicker="Dira na Utume" title="Misingi ya Huduma Yetu" />
